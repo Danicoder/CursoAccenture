@@ -1,7 +1,5 @@
 package Ejercicios_S1;
 
-import java.sql.Time;
-import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Enlace {
