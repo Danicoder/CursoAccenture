@@ -1,5 +1,7 @@
 package RecursosFormacion;
 
+import java.util.Iterator;
+
 public class BuclesYsaltos {
 	public static void Comparando() {
 		int a = 0;
@@ -144,6 +146,60 @@ public class BuclesYsaltos {
 		
 		System.out.println(unidades == 0 || decenas == 0 ? decenasArray[decenas] : decenasArray[decenas]+" y "+unidadesArray[unidades]);
 	}
+	public static void SalidaComandosArgs(String[] args) {
+		int num = 0;
+		double cuadrado = 0;
+		
+		for (String nums: args) {
+			num = Integer.parseInt(nums);
+			cuadrado = Math.pow(cuadrado, 2);
+			System.out.println("Cuadrado de "+ num + " es " + cuadrado);
+		}
+
+	}
+	public static void ListarNumeros() {
+		
+		for (int i = 100; i >= 0; i -= 23) {
+				System.out.println(i);
+		}
+	}
+	public void NumMultiplos() {
+		
+	}
+	public static void Factorial(int num) {
+		int factorial=0;
+		for (int i = num; i > 0; i--) {
+			factorial = factorial *i;
+		}
+		System.out.println("El factorial de "+ num +  "es:"+ factorial);
+	}
+	public static void TablaMultiplicar() {
+		int tabla=0;
+		
+		for (int i = 0; i < 10; i++) {
+			System.out.print(i+1 + "*");
+			for (int j = i; j <= i; j++) {
+				System.out.print(j+1);
+			}
+		}
+	}
+	public static void DibujoCuadrado(int cantidad) {
+		for (int i = 0; i < cantidad; i++) {//fila
+			for (int j = 0; j < cantidad; j++) { //columna
+				System.out.print("* ");
+			}
+		System.out.println("");
+		}
+	}
+	public static void PrimosCantidad() {
+		bool primo=true;
+		for (int i = 1; i <= 100; i++) {
+			if(primo % i == 0) {
+				primo += i;
+			}
+			System.out.println(primo);
+		}
+	}
 	public static void main(String[] args) {
 		//Comparando();
 		//NotasClase(3);
@@ -152,7 +208,13 @@ public class BuclesYsaltos {
 		//FiltroFecha3(20,8,2015);
 		//FiltroFecha4(20,8,2004);
 		//ConvertirNumAtextoV1(72);
-		ConvertirNumAtextoV2(72);
+		//ConvertirNumAtextoV2(72);
+		//SalidaComandosArgs(args);
+		//ListarNumeros();
+		//Factorial(8);
+		//TablaMultiplicar();
+		//DibujoCuadrado(8);
+		PrimosCantidad();
 	}
 
 }
