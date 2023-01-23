@@ -11,7 +11,11 @@ public class PruebaDibujos {
 		FormasGeometricas circulo2 = new Circulo(2);
 		Circulo c1 = new Circulo(2);
 		
+		Punto punto = new Punto(5,4);
+		circulo1.setCoordenadas(punto);
+		
 		//Cómo la clase padre implementa ese método sus subclases también pueden
+		c1.setCoordenadas(punto);
 		c1.getCoordenadas().invertir();
 		circulo2.getCoordenadas().invertir();
 		

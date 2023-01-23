@@ -7,34 +7,37 @@ package Automovil;
  * @author d.garcia.millan
  *
  */
-public class vehiculo {
+public class vehiculo implements Dao {
 	private int numMarchas;
 	private int velocidadMax;
 	private String VIN; // número de chasis
 	private int numRuedas;
-	
-	
-	//bloques inicialización staticos
+	private String matricula;
+	// bloques inicialización staticos
 	static int contador;
-	static {contador=1500;}
-	
-	/*Vehiculo(){
-		setMatricula("B-"+ ++contador);
+	static {
+		contador = 1500;
+	}
+
+	vehiculo() {
+		setMatricula("B-" + ++contador);
+	}
+
+	/*vehiculo(String modelo, int marchas) {
+		// llamar al otro constructor de la clase
+		this();
+		setModelo(modelo);
+		setMarchas(marchas);
 	}*/
-	
-	
+
 	public vehiculo(int numMarchas, int velocidadMax, String VIN, int numRuedas) {
 		super();
 		this.numMarchas = numMarchas;
 		this.velocidadMax = velocidadMax;
 		this.VIN = VIN;
 		this.numRuedas = numRuedas;
-		//llamar a otro constructor de la clase this.()?
-	}
-
-
-	public vehiculo() {
-		// TODO Auto-generated constructor stub
+		AccesoBD dao = new AccesoBD();
+		dao.AccesoLectura(this);
 	}
 
 	public int getNumMarchas() {
@@ -68,6 +71,24 @@ public class vehiculo {
 	public void setNumRuedas(int numRuedas) {
 		this.numRuedas = numRuedas;
 	}
-	
-	
+
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
+
+	@Override
+	public void leer() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void grabar() {
+		// TODO Auto-generated method stub
+
+	}
 }

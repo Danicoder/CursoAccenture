@@ -5,7 +5,7 @@ package dibujos;
  * 
  * @author Daniela García Millán
  */
-public abstract class FormasGeometricas{
+abstract class FormasGeometricas{
 	/**
 	 * Atributos de la clase que comparte con las clases que heredan del mismo
 	 */
@@ -35,11 +35,11 @@ public abstract class FormasGeometricas{
 	 * 
 	 * @param radio
 	 */
-	protected FormasGeometricas(double radio) {
+	public FormasGeometricas(double radio) {
 		super();
 		this.setRadio(radio);
 	}
-
+	
 	/**
 	 * Método que devuelve el ancho de la figura
 	 * 
@@ -108,5 +108,5 @@ public abstract class FormasGeometricas{
 	 */
 	public void setCoordenadas(Punto coordenadas) {
 		this.coordenadas = coordenadas;
-	}
+	}	
 }

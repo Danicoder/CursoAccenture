@@ -4,6 +4,12 @@ public class Punto {
 	private double x;
 	private double y;
 	
+	public Punto(double x, double y) {
+		super();
+		this.x = x;
+		this.y = y;
+	}
+
 	public double getX() {
 		return x;
 	}
@@ -24,5 +30,6 @@ public class Punto {
 		double dato = x;
 		x=y;
 		y=dato;
+		System.out.println(dato);
 	}
 }

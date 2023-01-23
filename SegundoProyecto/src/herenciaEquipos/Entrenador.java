@@ -17,11 +17,12 @@ public class Entrenador extends Empleados {
 	void Viajar() {
 		System.out.println(super.getnombre() + " viajando");
 	}
-	
-	static void dirigirPartido() {
+	//Sin static para hacer un cast
+	void dirigirPartido() {
 		System.out.println("Dirigiendo un partido");
 	}
-	static void dirigirEntrenamiento() {
+	//Sin static para hacer un cast
+	void dirigirEntrenamiento() {
 		System.out.println("Estoy dirigiendo un entrenamiento");
 	}
 

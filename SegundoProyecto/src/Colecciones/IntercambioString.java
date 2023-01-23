@@ -22,11 +22,9 @@ public class IntercambioString<T> {
 		 
 	}
 	public void volcado() {
-		T t1 = this.getTexto1();
-		T t2 = this.getTexto2();
-		System.out.println(t2);
-		System.out.println(t1);
-
+		T cambio = getTexto1();
+		setTexto1(getTexto2());
+		System.out.println("Invirtiendo:" + cambio);
 	}
 	/**
 	 *  Método que devuelve el contenido del texto1
