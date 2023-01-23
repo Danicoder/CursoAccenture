@@ -10,6 +10,10 @@ public class PCongelados extends Productos{
 	
 	private double temperatura;
 	
+	public PCongelados(String fechaCaducidad, int numeroLote, double temperatura) {
+		super(fechaCaducidad, numeroLote);
+		this.temperatura = temperatura;
+	}
 	/**
 	 * Método que devuelve la temperatura del producto congelado
 	 * @return temperatura
@@ -29,6 +33,6 @@ public class PCongelados extends Productos{
 	 */
 	@Override
 	public String toString() {
-		return "Temperatura: " + getTemperatura() + " ";
+		return super.toString() + "Temperatura: " + getTemperatura() + " ";
 	}
 }

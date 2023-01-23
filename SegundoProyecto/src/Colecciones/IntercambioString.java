@@ -26,6 +26,7 @@ public class IntercambioString<T> {
 		T t2 = this.getTexto2();
 		System.out.println(t2);
 		System.out.println(t1);
+
 	}
 	/**
 	 *  Método que devuelve el contenido del texto1

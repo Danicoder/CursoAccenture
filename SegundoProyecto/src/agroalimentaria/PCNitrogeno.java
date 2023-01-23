@@ -6,8 +6,16 @@ package agroalimentaria;
  *
  */
 public class PCNitrogeno extends PCongelados{
+
 	public String metodo;
 	public int segundos;
+	
+	public PCNitrogeno(String fechaCaducidad, int numeroLote, double temperatura, int segundos, String metodo) {
+		super(fechaCaducidad, numeroLote, temperatura);
+		this.metodo = metodo;
+		this.segundos = segundos;
+	}
+	
 	/**
 	 * Método que devuelve el tiempo obtenido
 	 * del nitrógeno en segundos
@@ -44,7 +52,7 @@ public class PCNitrogeno extends PCongelados{
 	 */
 	@Override
 	public String toString() {
-		return "métodod del nitrogeno: " + getMetodo() + ", segundos: " + getSegundos();
+		return super.toString() + "métodod del nitrogeno: " + getMetodo() + ", segundos: " + getSegundos();
 	}
 	
 }

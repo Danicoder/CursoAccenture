@@ -8,6 +8,11 @@ package agroalimentaria;
 public class PCAgua extends PCongelados{
 	
 	private double salinidad;
+	
+	public PCAgua(String fechaCaducidad, int numeroLote, double temperatura, double salinidad) {
+		super(fechaCaducidad, numeroLote, temperatura);
+		this.salinidad = salinidad;
+	}
 	/**
 	 * Método que devuelve la salinidad obtenida del agua
 	 * @return cantidad de sal encontrada en el agua
@@ -28,7 +33,7 @@ public class PCAgua extends PCongelados{
 	 */
 	@Override
 	public String toString() {
-		return "Salidad  del agua: " + salinidad;
+		return super.toString() + "Salidad  del agua: " + salinidad;
 	}
 
 }

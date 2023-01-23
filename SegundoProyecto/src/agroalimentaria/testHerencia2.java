@@ -7,32 +7,16 @@ package agroalimentaria;
 public class testHerencia2 {
 
 	public static void main(String[] args) {
-		// Creo un objeto de cada tipo y muestro los datos de cada uno de los objetos creados
-		Productos producto = new Productos();
-		PRefigerados refigerados = new PRefigerados();
-		PCongelados congelados = new PCongelados();
-		PCAire aire = new PCAire();
-		PFrescos frescos = new PFrescos();
-		
-		producto.setFechaCaducidad("20/01/2023");
-		producto.setNumeroLote(1);
-		
-		refigerados.setCodOrgSupAlim(100);
-		
-		congelados.setTemperatura(-34.5);
-		
-		aire.setpNitrogeno(20.0);
-		aire.setpOxigeno(30);
-		aire.setpDioxidoCarbono(63.02);
-		aire.setpVaporAgua(20.05);
-		
-		frescos.setFechaEnvasado("20/01/2023");
-		frescos.setPaisOrigen("España");
-		
-		System.out.println(producto.toString()+refigerados.toString());
-		System.out.println(producto.toString()+congelados.toString());
-		System.out.println(producto.toString()+congelados.toString()+"\n "+frescos.toString());		
-		System.out.println(producto.toString()+congelados.toString()+aire.toString());
+
+		PRefigerados refigerados = new PRefigerados("20/01/2023", 1,100);
+		PCongelados congelados = new PCongelados("20/01/2023", 1, -34.5);
+		PCAire aire = new PCAire("20/01/2023", 1, 20.0, 30, 63.02, 20.05, 2);
+		PFrescos frescos = new PFrescos("20/01/2023", 1,"20/01/2023","España");
+			
+		System.out.println(refigerados.toString());
+		System.out.println(congelados.toString());
+		System.out.println(frescos.toString());		
+		System.out.println(congelados.toString()+aire.toString());
 	}
 
 }

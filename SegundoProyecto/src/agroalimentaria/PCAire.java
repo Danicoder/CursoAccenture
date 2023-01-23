@@ -6,10 +6,20 @@ package agroalimentaria;
  *
  */
 public class PCAire extends PCongelados{
+	
 	private double pNitrogeno;
 	private double pOxigeno;
 	private double pDioxidoCarbono;
 	private double pVaporAgua;
+	
+	protected PCAire(String fechaCaducidad, int numeroLote, double temperatura, double pNitrogeno, double pOxigeno,
+			double pDioxidoCarbono, double pVaporAgua) {
+		super(fechaCaducidad, numeroLote, temperatura);
+		this.pNitrogeno = pNitrogeno;
+		this.pOxigeno = pOxigeno;
+		this.pDioxidoCarbono = pDioxidoCarbono;
+		this.pVaporAgua = pVaporAgua;
+	}
 	/**
 	 * Método que devuelve la cantidad de nitrógeno 
 	 * obtenida de los productos congelados
@@ -93,7 +103,7 @@ public class PCAire extends PCongelados{
 	 */
 	@Override
 	public String toString() {
-		return "\n %Nitrogeno: " + getpNitrogeno() + "\n %Oxigeno: " + getpOxigeno() + " \n %Dioxido de carbono: " + getpDioxidoCarbono()
+		return super.toString() + "\n %Nitrogeno: " + getpNitrogeno() + "\n %Oxigeno: " + getpOxigeno() + " \n %Dioxido de carbono: " + getpDioxidoCarbono()
 				+ "\n %VaporAgua: " + getpVaporAgua();
 	}
 	

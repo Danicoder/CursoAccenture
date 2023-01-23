@@ -6,7 +6,12 @@ package agroalimentaria;
  *
  */
 public class PRefigerados extends Productos{
-	//código de organismo de supervisión alimentaria
+
+	
+	public PRefigerados(String fechaCaducidad, int numeroLote, int codOrgSupAlim) {
+		super(fechaCaducidad, numeroLote);
+		this.codOrgSupAlim = codOrgSupAlim;
+	}
 	private int codOrgSupAlim;
 	/**
 	 * Método que devuelve el Código de Organismos
@@ -32,6 +37,6 @@ public class PRefigerados extends Productos{
 	 */
 	@Override
 	public String toString() {
-		return "Código organismo supervisor: " + getCodOrgSupAlim() + " ";
+		return super.toString()+" Código organismo supervisor: " + getCodOrgSupAlim() + " ";
 	}
 }

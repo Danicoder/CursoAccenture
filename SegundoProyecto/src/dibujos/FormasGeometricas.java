@@ -5,16 +5,18 @@ package dibujos;
  * 
  * @author Daniela García Millán
  */
-public abstract class FormasGeometricas {
+public abstract class FormasGeometricas{
 	/**
 	 * Atributos de la clase que comparte con las clases que heredan del mismo
 	 */
 	protected double base;
 	protected double altura;
 	protected double radio;
+	Punto coordenadas; //creo un objeto de la clase Punto
+	Texto texto; //creo un objeto de la clase Texto
 
+	
 	abstract void dibujar();
-
 	abstract double calcularArea();
 
 	/**
@@ -90,5 +92,21 @@ public abstract class FormasGeometricas {
 	 */
 	public void setRadio(double radio) {
 		this.radio = radio;
+	}
+	
+	
+	/**
+	 * Devuelve las coordenadas que hemos obtenido del objeto Punto
+	 * @return coordenadas
+	 */
+	public Punto getCoordenadas() {
+		return coordenadas;
+	}
+	/**
+	 * Obtiene las coordenadas que hemos obtenido del objeto Punto
+	 * @param coordenadas
+	 */
+	public void setCoordenadas(Punto coordenadas) {
+		this.coordenadas = coordenadas;
 	}
 }

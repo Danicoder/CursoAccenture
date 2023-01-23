@@ -7,6 +7,12 @@ package agroalimentaria;
 public class PFrescos extends Productos{
 	private String fechaEnvasado;
 	private String paisOrigen;
+	
+	public PFrescos(String fechaCaducidad, int numeroLote, String fechaEnvasado, String paisOrigen) {
+		super(fechaCaducidad, numeroLote);
+		this.fechaEnvasado = fechaEnvasado;
+		this.paisOrigen = paisOrigen;
+	}
 	/**
 	 * Método que devuelve la fecha de envasados del producto
 	 * @return la fecha indicada por el usuario
@@ -41,7 +47,7 @@ public class PFrescos extends Productos{
 	 */
 	@Override
 	public String toString() {
-		return "Fecha Envasado: " + fechaEnvasado + "\n Pais Origen: " + paisOrigen;
+		return super.toString() + "Fecha Envasado: " + fechaEnvasado + "\n Pais Origen: " + paisOrigen;
 	}
 
 }
