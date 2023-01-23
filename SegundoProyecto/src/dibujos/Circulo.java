@@ -8,8 +8,7 @@ package dibujos;
  */
 public class Circulo extends FormasGeometricas {
 	/**
-	 * Método que hace referencia al constructor creado en la clase padre, 
-	 * es decir, en la clase que lo hereda
+	 * Método utilizado para calcular el radio del círculo
 	 * @param radio
 	 */
 	protected Circulo(double radio) {

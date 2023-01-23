@@ -7,7 +7,8 @@ package RecursosFormacion;
  */
 public class BuclesYsaltos {
 	/**
-	 * Compruba cúal de ambos parámetros es el mayor,multiplo o sí son iguales
+	 * Método que compruba cúal de ambos parámetros es el mayor,multiplo o sí son
+	 * iguales
 	 */
 	public static void comparando(int a, int b) {
 		if (a > b)
@@ -24,9 +25,9 @@ public class BuclesYsaltos {
 	}
 
 	/**
-	 * Según la nota que tenga el aluno se le muestra al usuario sí dicha nota es
-	 * Insuficiente,bien,Suficiente o sobresaliente. Posdata: lo había hecho de otra
-	 * forma pero lo borre al ver que la que puso el profesor eramos óptima.
+	 * Método que según la nota que tenga el aluno se le muestra al usuario sí dicha
+	 * nota es Insuficiente,bien,Suficiente o sobresaliente. Posdata: lo había hecho
+	 * de otra forma pero lo borre al ver que la que puso el profesor eramos óptima.
 	 * 
 	 * @param nota
 	 */
@@ -283,7 +284,7 @@ public class BuclesYsaltos {
 	}
 
 	/**
-	 * Listar números de 100 al 0 de 23 en 23
+	 * Método que lista números de 100 al 0 de 23 en 23
 	 */
 	public static void listarNumeros() {
 		for (int i = 100; i >= 0; i -= 23) {
@@ -297,59 +298,86 @@ public class BuclesYsaltos {
 	 * @param num
 	 * @return
 	 */
-	static boolean esPrimo(int num) {
-		for (int i = 5; i < num; i++) {
-			if ((num % i) == 0) {
-				return false;
+	static int esPrimo(int num) {
+		int contador = 0;
+		for (int i = 1; i < num; i++) {
+			if ((num % i) == 0 || (contador == 2)) {
+				contador += 1;
 			}
 		}
-		return true;
+		return contador;
 	}
 
 	/**
-	 * Calcular los números múltiplos
+	 * Método que calcula los números múltiplos
 	 */
 	public static boolean esMultiplo(int n1, int n2) {
-		if (n1 % n2 == 0)
-			return true;
-		else
-			return false;
+		boolean result;
+		if (n1 % n2 == 0) {
+			result = true;
+		} else {
+			result = false;
+		}
+		return result;
+
 	}
 
 	/**
-	 * Calcular la suma de los primeros 10 números múltiplos de 5
+	 * Método que calcula la suma de los primeros 10 números múltiplos de 5
 	 */
 	public static void numMultiplo(int num) {
-		int acomulador = 0;
-		int contador = 0;
-		int suma =0;
-		
-		for (int i = 1; i <= 10000; i++) {
-			if (esMultiplo(i, num)) {
-				acomulador += i;
-				contador++;
-			}
-			if (contador == 10) {
-				contador=0;
-				suma += acomulador;
+		int contador = 10;
+		int suma = 0;
+		int indice = 0;
+		/*
+		 * No imprime correctamente despúes del 15 pero da el resultado esperado(en
+		 * ambos casos) while(contador > 0) { for (int i = 1; i <= 100; i++) { if
+		 * (esMultiplo(i, num)) { suma += i; contador--; System.out.println(suma); } }
+		 * // System.out.println("La suma es" +suma); }
+		 */
+
+		while (contador > 0) {
+			if (esMultiplo(++indice, num)) {
+				suma += indice;
+				contador--;
 				System.out.println(suma);
 			}
 		}
-
+		System.out.println("La suma es" + suma);
 	}
 
+	/**
+	 * Método que calcula el factorial del número 8
+	 * 
+	 * @param num
+	 */
 	public static void factorial(int num) {
-		int factorial = 0;
+		int factorial = 1;
 		for (int i = num; i > 0; i--) {
-			factorial = factorial * i;
+			factorial *= i;
+			System.out.print(i + " x ");
 		}
-		System.out.println("El factorial de " + num + "es:" + factorial);
+		System.out.println("= " + factorial);
 	}
 
+	/**
+	 * Método que muestra la tabla de multiplicar
+	 */
 	public static void tablaMultiplicar() {
-
+		for (int i = 1; i <= 10; i++) {
+			System.out.println("Tabla del " + i + "\n---------");
+			for (int j = 1; j <= 10; j++) {
+				System.out.println(i + " x " + j + " = " + (i * j));
+			}
+			System.out.println();
+		}
 	}
 
+	/**
+	 * Método dibuja el cuadrado en forma de asteriscos
+	 * 
+	 * @param cantidad
+	 */
 	public static void dibujoCuadrado(int cantidad) {
 		for (int i = 0; i < cantidad; i++) {// fila
 			for (int j = 0; j < cantidad; j++) { // columna
@@ -359,8 +387,18 @@ public class BuclesYsaltos {
 		}
 	}
 
+	/**
+	 * Método que calcula cuantos números primos hay entre 1 y 100, y cuales son.
+	 */
 	public static void primosCantidad() {
-
+		int contando = 0;
+		System.out.println("Los números primos son: ");
+		for (int i = 1; i < 100; i++) {
+			if (esPrimo(i) != 0) {
+				contando += i;
+				System.out.print(i + " ");
+			}
+		}
 	}
 
 	public static void main(String[] args) {
@@ -374,11 +412,10 @@ public class BuclesYsaltos {
 		// convertirNumAtextoV2(72);
 		// salidaComandosArgs(args);
 		// listarNumeros();
-		numMultiplo(5);
-		// numMultiplos();
+		// numMultiplo(5);
 		// factorial(8);
 		// tablaMultiplicar();
 		// dibujoCuadrado(8);
-		// primosCantidad();
+		primosCantidad();
 	}
 }

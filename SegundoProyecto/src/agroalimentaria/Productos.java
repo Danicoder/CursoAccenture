@@ -1,6 +1,6 @@
 package agroalimentaria;
 /**
- * 
+ * Clase que define los productos de la empresa agroalimentaria.
  * @author Daniela García Millán
  *
  */

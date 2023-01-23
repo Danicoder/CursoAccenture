@@ -6,7 +6,7 @@ package agroalimentaria;
  * @author Daniela García Millán
  *
  */
-public class PCongelados {
+public class PCongelados extends Productos{
 	
 	private double temperatura;
 	
