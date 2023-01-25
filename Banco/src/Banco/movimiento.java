@@ -49,6 +49,6 @@ public class movimiento {
 	}
 	@Override
 	public String toString() {
-		return "movimiento [mConcepto=" + mConcepto + ", mFecha=" + mFecha + ", nImporte=" + nImporte + "]";
+		return getmFecha()+ "\t" + getmConcepto() + "\t" +getnImporte();
 	}
 }

@@ -22,21 +22,25 @@ public class main {
 		credito credito = new credito(fechaCaducidad,"PT50000201231234567890154","Fernando García",4500);
 			
 		cuenta.ingresar(34);
+		cuenta.listMovimientos();
 		cuenta.ingresar("gasolina", 45);
 		cuenta.retirar(2);
-		cuenta.retirar("impuestos", 95);
+		cuenta.retirar("llavero", 4);
 		
 		debito.setCuenta(cuenta);
 		debito.ingresar(50);
-		debito.retirar(34);
+		debito.ingresar(36);
+		debito.retirar(20);
 		
+		/**
+		 * Movimeitnos de crédito no estan en cuenta
+		 */
 		credito.setCuenta(cuenta);
-		credito.ingresar(15);
-		credito.ingresar(23);
+		credito.pagoEnEstablecimiento("prueba", 12);
+		credito.ingresar(87);
 		credito.retirar(10);
-		System.out.println(credito.getSaldo());
 		
-		//credito.liquidar(fechaActual.getMonth(), fechaActual.getYear());
+		credito.liquidar(fechaActual.getMonthValue(), fechaActual.getYear());
 		
 		cuenta.listMovimientos();
 	}

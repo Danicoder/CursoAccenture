@@ -21,6 +21,7 @@ public class credito extends tarjeta {
 	public credito(LocalDate mfechaDeCaducidad, String mNumero, String mTitular, double mCredito) {
 		super(mfechaDeCaducidad, mNumero, mTitular);
 		this.mCredito = mCredito;
+		mMovimiento = new ArrayList<movimiento>();
 	}
 
 	public double getmCredito() {
@@ -49,10 +50,9 @@ public class credito extends tarjeta {
 	 */
 	@Override
 	public void ingresar(double importe) throws Exception {
-		movimiento movimiento = new movimiento("Ingreo en tarjeta de crédito",LocalDate.now(),importe);
 		if (getCreditoDisponible() > 0)	
-			mMovimiento.add(movimiento);
-		if (importe <= 0) {
+			mMovimiento.add(new movimiento("Ingreo en tarjeta de crédito",LocalDate.now(),importe));
+		if (importe < 0) {
 			throw new Exception("No puede ingresar valores negativos");
 		}
 	}
@@ -69,15 +69,17 @@ public class credito extends tarjeta {
 		movimiento m = new movimiento();
 		System.out.println("Liquidación de la tarjeta de crédito cuyo mes es: " + mes + " y año: " + anyo);
 		for (movimiento movimiento : mMovimiento) {
-			if ((mes == movimiento.getmFecha().getMonthValue()) && (movimiento.getmFecha().getYear() == anyo)) {
+			if ((mes == movimiento.getmFecha().getMonthValue()) 
+				&& (movimiento.getmFecha().getYear() == anyo)) {
 				suma += movimiento.getnImporte();
 				mMovimiento.remove(movimiento);
 			}
 		}
 		// Añado el movimiento a la cuenta asociada
+		m.setmFecha(LocalDate.of(anyo, mes, 27));
 		m.setnImporte(suma);
 		if (suma != 0) {
-			mCuentaAsociada.addMovimiento(suma, "liquidación");
+			mCuentaAsociada.addMovimiento(suma, "liquidación"); //lo añade a cuenta asociada
 		}
 	}
 
@@ -90,7 +92,7 @@ public class credito extends tarjeta {
 	public void pagoEnEstablecimiento(String concepto, double importe) throws Exception {
 		this.mCuentaAsociada.retirar("Compra en: " + concepto, importe);
 		getCreditoDisponible();
-		if (importe <= 0)
+		if (importe < 0)
 			throw new Exception("No puede ingresar valores negativos");
 		else {
 			if (getCreditoDisponible() > 0) {
@@ -109,7 +111,7 @@ public class credito extends tarjeta {
 	 */
 	@Override
 	public void retirar(double importe) throws Exception {
-		if (importe <= 0)
+		if (importe < 0)
 			throw new Exception("No puede retirar valores negativos");
 		else if (getCreditoDisponible() < importe) {
 			importe = importe * COMISION > MIN_COMISION ? MIN_COMISION : importe * COMISION;

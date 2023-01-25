@@ -8,6 +8,9 @@ package Implementacion;
  */
 public class filtro {
 	public static boolean tMax(String texto,int longitud) {
+		if(texto > 20 && texto < 30) {
+			
+		}
 		return false;
 	}
 	public static boolean tMin(String texto,int longitud) {

@@ -1,5 +1,6 @@
 package Banco;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import Implementacion.filtro;
@@ -52,12 +53,17 @@ public class cuenta {
 		movimiento m = new movimiento();
 		m.setnImporte(importe);
 		m.setmConcepto(concepto);
+		m.setmFecha(LocalDate.now());
+		addMovimiento(m);
 	}
-
+	public void addMovimiento(movimiento m) {
+		nMovimiento.add(m);
+	}
 	public void listMovimientos() {
 		System.out.println("-----------------Movimientos realizados en la cuenta--------------------");
-		for (movimiento movimiento : nMovimiento) {
-			System.out.println(movimiento);
+		System.out.println(nMovimiento.size());
+		for (movimiento mov : nMovimiento) {
+			System.out.println(mov);
 		}
 	}
 
@@ -75,7 +81,7 @@ public class cuenta {
 	}
 
 	public void ingresar(double importe) throws Exception {
-		if (importe <= 0) {
+		if (importe < 0) {
 			throw new Exception("No puede ingresar valores negativos");
 		} else {
 			ingresar("ingreso en efectivo: ", importe); // polimorfismo
@@ -83,7 +89,7 @@ public class cuenta {
 	}
 
 	public void ingresar(String concepto, double importe) throws Exception {
-		if (importe <= 0) {
+		if (importe < 0) {
 			throw new Exception("No puede ingresar valores negativos");
 		} else {
 			addMovimiento(importe, concepto);
@@ -97,7 +103,7 @@ public class cuenta {
 	 * @throws Exception
 	 */
 	public void retirar(double importe) throws Exception {
-		if (importe <= 0) {
+		if (importe < 0) {
 			System.out.println("No puede retirar un saldo negativo");
 		} else {
 			retirar("Retirar en efectivo: ", importe); // polimorfismo
@@ -111,7 +117,8 @@ public class cuenta {
 	 * @param importe
 	 */
 	public void retirar(String concepto, double importe) {
-		if (importe <= 0) {
+		if (importe < 0) {
+			System.out.println(importe);
 			System.out.println("No puede retirar un saldo negativo");
 		} else if (getSaldo() > 0) {
 			addMovimiento(-importe, concepto); // negativo porque estoy retirando dinero

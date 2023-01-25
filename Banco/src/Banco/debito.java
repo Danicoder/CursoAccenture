@@ -15,7 +15,7 @@ public class debito extends tarjeta {
 
 	@Override
 	public void ingresar(double importe) throws Exception {
-		if(importe <= 0)
+		if(importe < 0)
 			throw new Exception("No puede ingresar valores negativos");
 		else {
 			if(getSaldo() > 0) {
@@ -31,6 +31,6 @@ public class debito extends tarjeta {
 
 	@Override
 	public void retirar(double importe) throws Exception {
-		this.mCuentaAsociada.retirar("Retiro en (cajero automático)", -importe);
+		this.mCuentaAsociada.retirar("Retiro en (cajero automático)", importe);
 	}
 }
