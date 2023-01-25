@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  */
 public class credito extends tarjeta {
-
+	//cuenta asociada para liquidar unicamente
 	protected double mCredito;
 	protected ArrayList<movimiento> mMovimiento;
 

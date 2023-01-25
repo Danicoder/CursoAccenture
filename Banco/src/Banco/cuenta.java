@@ -3,7 +3,7 @@ package Banco;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import Implementacion.filtro;
+import Implementacion.Filtro;
 
 /**
  * importe positivo siempre

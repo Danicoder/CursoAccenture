@@ -3,7 +3,7 @@ package Banco;
 import java.time.LocalDate;
 
 public class debito extends tarjeta {
-
+	//cuenta asociada envia todos los movimientos a la cuenta
 	public debito(LocalDate mfechaDeCaducidad, String mNumero, String mTitular) {
 		super(mfechaDeCaducidad, mNumero, mTitular);
 	}
