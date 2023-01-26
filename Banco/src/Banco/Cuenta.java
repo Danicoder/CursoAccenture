@@ -10,19 +10,23 @@ import Implementacion.Filtro;
  * 
  * @author d.garcia.millan
  */
-public class cuenta {
-	protected ArrayList<movimiento> nMovimiento;
+public class Cuenta {
+	protected ArrayList<Movimiento> nMovimiento;
 	protected String nNumero;
 	protected String mTitular;
-
+	Filtro filtro = new Filtro();
+	final int TEXTO_MAX = 30;
+	final int TEXTO_MIN = 20;
 	/**
 	 * Constructores
 	 */
 
-	public cuenta(String nNumero, String mTitular) {
-		this.nNumero = nNumero;
-		this.mTitular = mTitular;
-		nMovimiento = new ArrayList<movimiento>();
+	public Cuenta(String nNumero, String mTitular) {
+		//if(filtro.cumpleRangoLongitud(mTitular, TEXTO_MIN, TEXTO_MIN)) {
+			this.nNumero = nNumero;
+			this.mTitular = mTitular;
+			nMovimiento = new ArrayList<Movimiento>();
+		//}
 	}
 
 	/**
@@ -50,19 +54,19 @@ public class cuenta {
 	 */
 
 	public void addMovimiento(double importe, String concepto) {
-		movimiento m = new movimiento();
+		Movimiento m = new Movimiento();
 		m.setnImporte(importe);
 		m.setmConcepto(concepto);
 		m.setmFecha(LocalDate.now());
 		addMovimiento(m);
 	}
-	public void addMovimiento(movimiento m) {
+	public void addMovimiento(Movimiento m) {
 		nMovimiento.add(m);
 	}
 	public void listMovimientos() {
 		System.out.println("-----------------Movimientos realizados en la cuenta--------------------");
 		System.out.println(nMovimiento.size());
-		for (movimiento mov : nMovimiento) {
+		for (Movimiento mov : nMovimiento) {
 			System.out.println(mov);
 		}
 	}
@@ -74,7 +78,7 @@ public class cuenta {
 	 */
 	public double getSaldo() {
 		double saldo = 0;
-		for (movimiento movimiento : nMovimiento) {
+		for (Movimiento movimiento : nMovimiento) {
 			saldo += movimiento.getnImporte();
 		}
 		return saldo;
@@ -116,10 +120,9 @@ public class cuenta {
 	 * @param concepto
 	 * @param importe
 	 */
-	public void retirar(String concepto, double importe) {
+	public void retirar(String concepto, double importe) throws Exception{
 		if (importe < 0) {
-			System.out.println(importe);
-			System.out.println("No puede retirar un saldo negativo");
+			throw new Exception("No puede retirar un saldo negativo");
 		} else if (getSaldo() > 0) {
 			addMovimiento(-importe, concepto); // negativo porque estoy retirando dinero
 			System.out.println("Retiro realizado");

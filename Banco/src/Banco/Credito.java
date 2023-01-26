@@ -5,23 +5,25 @@ package Banco;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * @author d.garcia.millan
  *
  */
-public class credito extends tarjeta {
-	//cuenta asociada para liquidar unicamente
+public class Credito extends Tarjeta {
+	// cuenta asociada para liquidar unicamente
 	protected double mCredito;
-	protected ArrayList<movimiento> mMovimiento;
+	protected ArrayList<Movimiento> mMovimiento;
 
 	private final double COMISION = 5 / 100;
 	private final double MIN_COMISION = 3;
 
-	public credito(LocalDate mfechaDeCaducidad, String mNumero, String mTitular, double mCredito) {
+	public Credito(LocalDate mfechaDeCaducidad, String mNumero, String mTitular, double mCredito) {
 		super(mfechaDeCaducidad, mNumero, mTitular);
 		this.mCredito = mCredito;
-		mMovimiento = new ArrayList<movimiento>();
+		mMovimiento = new ArrayList<Movimiento>();
 	}
 
 	public double getmCredito() {
@@ -39,7 +41,7 @@ public class credito extends tarjeta {
 	@Override
 	public double getSaldo() {
 		double saldo = 0;
-		for (movimiento movimiento : mMovimiento) {
+		for (Movimiento movimiento : mMovimiento) {
 			saldo += movimiento.getnImporte();
 		}
 		return saldo + getCreditoDisponible();
@@ -50,8 +52,8 @@ public class credito extends tarjeta {
 	 */
 	@Override
 	public void ingresar(double importe) throws Exception {
-		if (getCreditoDisponible() > 0)	
-			mMovimiento.add(new movimiento("Ingreo en tarjeta de crédito",LocalDate.now(),importe));
+		if (getCreditoDisponible() > 0)
+			mMovimiento.add(new Movimiento("Ingreo en tarjeta de crédito", LocalDate.now(), importe));
 		if (importe < 0) {
 			throw new Exception("No puede ingresar valores negativos");
 		}
@@ -65,22 +67,36 @@ public class credito extends tarjeta {
 	 * @param anyo
 	 */
 	public void liquidar(int mes, int anyo) {
+		/*
+		 * double suma = 0; Movimiento m = new Movimiento();
+		 * System.out.println("Liquidación de la tarjeta de crédito cuyo mes es: " + mes
+		 * + " y año: " + anyo); for (Movimiento movimiento : mMovimiento) { if ((mes ==
+		 * movimiento.getmFecha().getMonthValue()) && (movimiento.getmFecha().getYear()
+		 * == anyo)) { suma += movimiento.getnImporte(); mMovimiento.remove(movimiento);
+		 * } } // Añado el movimiento a la cuenta asociada
+		 * m.setmFecha(LocalDate.of(anyo, mes, 27)); m.setnImporte(suma); if (suma != 0)
+		 * { mCuentaAsociada.addMovimiento(suma, "liquidación"); //lo añade a cuenta
+		 * asociada }
+		 */
+
+		// dos pasadas, una para calcular el stream y otra para calcular los elementos
 		double suma = 0;
-		movimiento m = new movimiento();
-		System.out.println("Liquidación de la tarjeta de crédito cuyo mes es: " + mes + " y año: " + anyo);
-		for (movimiento movimiento : mMovimiento) {
-			if ((mes == movimiento.getmFecha().getMonthValue()) 
-				&& (movimiento.getmFecha().getYear() == anyo)) {
-				suma += movimiento.getnImporte();
-				mMovimiento.remove(movimiento);
-			}
-		}
-		// Añado el movimiento a la cuenta asociada
+		Movimiento m = new Movimiento();
+
+		Optional<Double> r = mMovimiento.stream()
+				.filter(mov -> m.getmFecha().getMonthValue() == mes && m.getmFecha().getYear() == anyo)
+				.map(mov -> m.getnImporte()).reduce((subtotal, element) -> subtotal + element);
+
+		mMovimiento.stream()
+				.filter(mov -> !(m.getmFecha().getMonthValue() == mes && m.getmFecha().getYear() == anyo))
+				.collect(Collectors.toList());
+
 		m.setmFecha(LocalDate.of(anyo, mes, 27));
 		m.setnImporte(suma);
 		if (suma != 0) {
-			mCuentaAsociada.addMovimiento(suma, "liquidación"); //lo añade a cuenta asociada
+			mCuentaAsociada.addMovimiento(suma, "liquidación"); // lo añade a cuenta asociada
 		}
+
 	}
 
 	/**
@@ -96,7 +112,7 @@ public class credito extends tarjeta {
 			throw new Exception("No puede ingresar valores negativos");
 		else {
 			if (getCreditoDisponible() > 0) {
-				movimiento m = new movimiento("Compra en: " + concepto, LocalDate.now(), importe);
+				Movimiento m = new Movimiento("Compra en: " + concepto, LocalDate.now(), importe);
 				this.mMovimiento.add(m);
 			}
 		}
@@ -115,7 +131,7 @@ public class credito extends tarjeta {
 			throw new Exception("No puede retirar valores negativos");
 		else if (getCreditoDisponible() < importe) {
 			importe = importe * COMISION > MIN_COMISION ? MIN_COMISION : importe * COMISION;
-			movimiento m = new movimiento("Retirada en cuenta asociada(cajero automático)", LocalDate.now(), -importe);
+			Movimiento m = new Movimiento("Retirada en cuenta asociada(cajero automático)", LocalDate.now(), -importe);
 			mMovimiento.add(m);
 		}
 	}

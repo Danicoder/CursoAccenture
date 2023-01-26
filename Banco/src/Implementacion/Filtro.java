@@ -1,34 +1,98 @@
 package Implementacion;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 /**
- * Nombre de titular > 20 y < 30
- * Fecha vto > 3 años < 5 años
- * Concepto textos ingresos y gastos
+ * Clase que filtra por nombre y fecha
+ * 
  * @author d.garcia.millan
  *
  */
-public class Filtro {
-	
-	public static boolean tMax(String texto, int longitud) {
+public class Filtro implements Filtros {
+	/**
+	 * Método que devuelve verdadero siempre que su longitud no sea mayor a 30
+	 * 
+	 * @param texto
+	 * @param longitud
+	 * @return
+	 */
+	public boolean tMax(String texto, int longitud) {
 		return texto.length() <= longitud;
 	}
-	public static boolean tMin(String texto,int longitud) {
+
+	/**
+	 * Método que devuelve verdadero siempre que su longitud no sea menor a 20
+	 * 
+	 * @param texto
+	 * @param longitud
+	 * @return
+	 */
+	public boolean tMin(String texto, int longitud) {
 		return texto.length() >= longitud;
 	}
-	public static boolean cumpleRangoLongitud(String texto, int maxLong, int minLong) {
-		return tMax(texto,maxLong) && tMin(texto,minLong);
+
+	/**
+	 * Controla la longitud del concepto y del titular de la cuenta
+	 * 
+	 * @param texto
+	 * @param maxLong
+	 * @param minLong
+	 * @return El rango entre 20 y 30
+	 */
+	public boolean cumpleRangoLongitud(String texto, int maxLong, int minLong) {
+		return tMax(texto, maxLong) && tMin(texto, minLong);
 	}
-	public static boolean fmax(LocalDate fecha,int fmax) {
+
+	/**
+	 * Método que devuelve verdadero siempre que la fecha sea menor a 5 años
+	 * 
+	 * @param fecha
+	 * @param fmax
+	 * @return el año , siempre no sea mayor a 5 años
+	 */
+	public boolean fmax(LocalDate fecha, int fmax) {
 		return fecha.getYear() < fmax;
 	}
-	public static boolean fmin(LocalDate fecha,int fmin) {
+
+	/**
+	 * Método que devuelve verdadero siempre que la fecha sea mayor a 3 años
+	 * 
+	 * @param fecha
+	 * @param fmin
+	 * @return el año siempre que no sea mayor a 3 años
+	 */
+	public boolean fmin(LocalDate fecha, int fmin) {
 		return fecha.getYear() > fmin;
-		//return fecha.isAfter(fmax); me obliga a poner en todos localDate
+		// return fecha.isAfter(fmax); me obliga a poner en todos localDate
 	}
-	public static boolean fechaFiltro(LocalDate fecha, int maxFecha,int minFecha) {
-		return fmax(fecha,maxFecha) && fmin(fecha,minFecha);
+
+	/**
+	 * Método que cumple con el rango de una fecha de entre 3 y 5 años
+	 * 
+	 * @param fecha
+	 * @param maxFecha
+	 * @param minFecha
+	 * @return la fecha siempre que no supere el rango
+	 */
+	public boolean fechaFiltro(LocalDate fecha, int maxFecha, int minFecha) {
+		return fmax(fecha, maxFecha) && fmin(fecha, minFecha);
 	}
-	
+
+	public LocalDate fechaCorrecta(String fecha) throws Exception {
+		return fechaCorrecta(fecha,"dd/MM/YYYY");
+	}
+
+	public LocalDate fechaCorrecta(String fecha, String formato) throws Exception {
+		LocalDate date = LocalDate.parse(fecha);
+
+		if (date.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)) == formato
+				|| formato == date.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM))) {
+			return date;
+		} else {
+			throw new Exception("La fecha es nula o no tiene el formato deseado");
+		}
+	}
 }

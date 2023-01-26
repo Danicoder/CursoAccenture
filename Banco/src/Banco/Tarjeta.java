@@ -1,15 +1,14 @@
 package Banco;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
-public abstract class tarjeta {
-	protected cuenta mCuentaAsociada;
+public abstract class Tarjeta {
+	protected Cuenta mCuentaAsociada;
 	protected LocalDate mfechaDeCaducidad; //dd/mm/año
 	protected String mNumero;
 	protected String mTitular;
 	
-	protected tarjeta(LocalDate mfechaDeCaducidad, String mNumero, String mTitular) {
+	protected Tarjeta(LocalDate mfechaDeCaducidad, String mNumero, String mTitular) {
 		this.mfechaDeCaducidad = mfechaDeCaducidad;
 		this.mNumero = mNumero;
 		this.mTitular = mTitular;
@@ -17,8 +16,11 @@ public abstract class tarjeta {
 	/**
 	 * Setters y getters
 	 */
-	public void setCuenta(cuenta c) {
+	public void setCuenta(Cuenta c) {
 		this.mCuentaAsociada = c;
+	}
+	public Cuenta getCuenta(Cuenta c) {
+		return mCuentaAsociada;
 	}
 
 	public LocalDate getMfechaDeCaducidad() {

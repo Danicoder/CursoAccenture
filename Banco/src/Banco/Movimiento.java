@@ -6,7 +6,7 @@ import java.time.LocalDate;
  * Clase que controla el movimiento de la cuenta
  * @author d.garcia.millan
  */
-public class movimiento {
+public class Movimiento {
 	protected String mConcepto;
 	protected LocalDate mFecha;
 	protected double nImporte;
@@ -14,14 +14,14 @@ public class movimiento {
 	/**
 	 * Constructores
 	 */
-	public movimiento(String mConcepto, LocalDate mFecha, double nImporte) {
+	public Movimiento(String mConcepto, LocalDate mFecha, double nImporte) {
 		super();
 		this.mConcepto = mConcepto;
 		this.mFecha = mFecha;
 		this.nImporte = nImporte;
 	}
 	
-	public movimiento() {
+	public Movimiento() {
 		super();
 	}
 

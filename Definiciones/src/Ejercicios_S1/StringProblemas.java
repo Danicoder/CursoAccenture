@@ -1,7 +1,5 @@
 package Ejercicios_S1;
 
-import java.util.Iterator;
-
 public class StringProblemas {
 	public static void FraseAlreves(String[] args) {
 	
