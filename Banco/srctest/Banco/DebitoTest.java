@@ -61,15 +61,13 @@ class DebitoTest {
 	@Test
 	void testTarjeta() {
 		Tarjeta tdeb = new Debito(fecha, NUMEROCTO_CTA, TITULAR);
-		System.out.println(tdeb);
-		System.out.println(deb.mCuentaAsociada);
-		assertEquals(tdeb,deb.mCuentaAsociada);
+		assertEquals(tdeb,deb.getmCuentaAsociada());
 	}
 
 	@Test
 	void testSetCuenta() {
 		Cuenta c = new Cuenta(NUMEROCTO_CTA, TITULAR);
-		assertEquals(c.nNumero,deb.mCuentaAsociada);
+		assertEquals(c.nNumero,deb.getmCuentaAsociada());
 	}
 
 	@Test

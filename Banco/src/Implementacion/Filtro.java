@@ -3,6 +3,7 @@ package Implementacion;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.format.FormatStyle;
 
 /**
@@ -86,13 +87,10 @@ public class Filtro implements Filtros {
 	}
 
 	public LocalDate fechaCorrecta(String fecha, String formato) throws Exception {
-		LocalDate date = LocalDate.parse(fecha);
-
-		if (date.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)) == formato
-				|| formato == date.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM))) {
-			return date;
-		} else {
-			throw new Exception("La fecha es nula o no tiene el formato deseado");
-		}
+		DateTimeFormatter formater = DateTimeFormatter.ofPattern(formato);
+		try {
+			return LocalDate.parse(fecha, formater);
+		}catch(DateTimeParseException e) {}
+		return null;
 	}
 }

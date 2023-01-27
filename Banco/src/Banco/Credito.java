@@ -67,36 +67,36 @@ public class Credito extends Tarjeta {
 	 * @param anyo
 	 */
 	public void liquidar(int mes, int anyo) {
-		/*
-		 * double suma = 0; Movimiento m = new Movimiento();
-		 * System.out.println("Liquidación de la tarjeta de crédito cuyo mes es: " + mes
-		 * + " y año: " + anyo); for (Movimiento movimiento : mMovimiento) { if ((mes ==
-		 * movimiento.getmFecha().getMonthValue()) && (movimiento.getmFecha().getYear()
-		 * == anyo)) { suma += movimiento.getnImporte(); mMovimiento.remove(movimiento);
-		 * } } // Añado el movimiento a la cuenta asociada
-		 * m.setmFecha(LocalDate.of(anyo, mes, 27)); m.setnImporte(suma); if (suma != 0)
-		 * { mCuentaAsociada.addMovimiento(suma, "liquidación"); //lo añade a cuenta
-		 * asociada }
-		 */
-
+		 double suma = 0; 
+		 Movimiento m = new Movimiento();
+		 
+		 System.out.println("Liquidación de la tarjeta de crédito cuyo mes es: " + mes
+		 + " y año: " + anyo); 
+		 
+		 for (Movimiento movimiento : mMovimiento) { 
+			 if ((mes == movimiento.getmFecha().getMonthValue()) && (movimiento.getmFecha().getYear()
+		 == anyo)) { suma += movimiento.getnImporte(); mMovimiento.remove(movimiento);
+		 } } // Añado el movimiento a la cuenta asociada
+		 m.setmFecha(LocalDate.of(anyo, mes, 27)); m.setnImporte(suma); if (suma != 0)
+		 { mCuentaAsociada.addMovimiento(suma, "liquidación"); //lo añade a cuenta
+		 asociada }
+		 
+			m.setmFecha(LocalDate.of(anyo, mes, 27));
+			m.setnImporte(suma);
+			if (suma != 0) {
+				getmCuentaAsociada().addMovimiento(suma, "liquidación"); // lo añade a cuenta asociada
+			}
 		// dos pasadas, una para calcular el stream y otra para calcular los elementos
 		double suma = 0;
-		Movimiento m = new Movimiento();
-
-		Optional<Double> r = mMovimiento.stream()
-				.filter(mov -> m.getmFecha().getMonthValue() == mes && m.getmFecha().getYear() == anyo)
-				.map(mov -> m.getnImporte()).reduce((subtotal, element) -> subtotal + element);
-
-		mMovimiento.stream()
-				.filter(mov -> !(m.getmFecha().getMonthValue() == mes && m.getmFecha().getYear() == anyo))
-				.collect(Collectors.toList());
-
-		m.setmFecha(LocalDate.of(anyo, mes, 27));
-		m.setnImporte(suma);
-		if (suma != 0) {
-			mCuentaAsociada.addMovimiento(suma, "liquidación"); // lo añade a cuenta asociada
-		}
-
+//		Movimiento m = new Movimiento();
+//
+//		Optional<Double> r = mMovimiento.stream()
+//				.filter(mov -> m.getmFecha().getMonthValue() == mes && m.getmFecha().getYear() == anyo)
+//				.map(mov -> m.getnImporte()).reduce((subtotal, element) -> subtotal + element);
+//
+//		mMovimiento.stream()
+//				.filter(mov -> !(m.getmFecha().getMonthValue() == mes && m.getmFecha().getYear() == anyo))
+//				.collect(Collectors.toList());
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class Credito extends Tarjeta {
 	 */
 	@Override
 	public void pagoEnEstablecimiento(String concepto, double importe) throws Exception {
-		this.mCuentaAsociada.retirar("Compra en: " + concepto, importe);
+		this.getmCuentaAsociada().retirar("Compra en: " + concepto, importe);
 		getCreditoDisponible();
 		if (importe < 0)
 			throw new Exception("No puede ingresar valores negativos");

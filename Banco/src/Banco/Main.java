@@ -31,7 +31,8 @@ public class Main {
 		cuenta.retirar(2);
 		cuenta.retirar("llavero", 4);
 
-		debito.setCuenta(cuenta);
+		//debito.setCuenta(cuenta);
+		debito.setmCuentaAsociada(cuenta);
 		debito.ingresar(50);
 		debito.ingresar(36);
 		debito.retirar(20);
@@ -39,7 +40,8 @@ public class Main {
 		/**
 		 * Movimeitnos de crédito no estan en cuenta
 		 */
-		credito.setCuenta(cuenta);
+		//credito.setCuenta(cuenta);
+		credito.setmCuentaAsociada(cuenta);
 		credito.pagoEnEstablecimiento("prueba", 12);
 		credito.ingresar(87);
 		credito.retirar(10);

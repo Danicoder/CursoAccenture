@@ -64,10 +64,11 @@ public class Cuenta {
 		nMovimiento.add(m);
 	}
 	public void listMovimientos() {
-		System.out.println("-----------------Movimientos realizados en la cuenta--------------------");
-		System.out.println(nMovimiento.size());
+//		System.out.println("-----------------Movimientos realizados en la cuenta--------------------");
+//		System.out.println(nMovimiento.size());
 		for (Movimiento mov : nMovimiento) {
-			System.out.println(mov);
+			//System.out.println(mov);
+			System.out.printf("-----------------Movimientos realizados en la cuenta--------------------",mov);
 		}
 	}
 

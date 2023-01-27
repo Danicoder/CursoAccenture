@@ -10,7 +10,7 @@ public class Debito extends Tarjeta {
 
 	@Override
 	public double getSaldo() {
-		return this.getCuenta(mCuentaAsociada).getSaldo();
+		return this.getmCuentaAsociada().getSaldo();
 	}
 
 	@Override
@@ -19,18 +19,18 @@ public class Debito extends Tarjeta {
 			throw new Exception("No puede ingresar valores negativos");
 		else {
 			if(getSaldo() > 0) {
-				this.mCuentaAsociada.ingresar("Ingreso en (cajero automático)", importe);
+				this.getmCuentaAsociada().ingresar("Ingreso en (cajero automático)", importe);
 			}
 		}
 	}
 
 	@Override
 	public void pagoEnEstablecimiento(String concepto, double importe) throws Exception {
-		this.mCuentaAsociada.retirar("Compra en: "+ concepto, importe);
+		this.getmCuentaAsociada().retirar("Compra en: "+ concepto, importe);
 	}
 
 	@Override
 	public void retirar(double importe) throws Exception {
-		this.mCuentaAsociada.retirar("Retiro en (cajero automático)", importe);
+		this.getmCuentaAsociada().retirar("Retiro en (cajero automático)", importe);
 	}
 }
