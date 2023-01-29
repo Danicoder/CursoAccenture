@@ -1,3 +1,5 @@
+
+
 /**
  * 
  */
@@ -74,20 +76,20 @@ public class Credito extends Tarjeta {
 		 + " y año: " + anyo); 
 		 
 		 for (Movimiento movimiento : mMovimiento) { 
-			 if ((mes == movimiento.getmFecha().getMonthValue()) && (movimiento.getmFecha().getYear()
-		 == anyo)) { suma += movimiento.getnImporte(); mMovimiento.remove(movimiento);
-		 } } // Añado el movimiento a la cuenta asociada
-		 m.setmFecha(LocalDate.of(anyo, mes, 27)); m.setnImporte(suma); if (suma != 0)
-		 { mCuentaAsociada.addMovimiento(suma, "liquidación"); //lo añade a cuenta
-		 asociada }
-		 
-			m.setmFecha(LocalDate.of(anyo, mes, 27));
-			m.setnImporte(suma);
-			if (suma != 0) {
-				getmCuentaAsociada().addMovimiento(suma, "liquidación"); // lo añade a cuenta asociada
-			}
+			 if ((mes == movimiento.getmFecha().getMonthValue()) 
+				&& (movimiento.getmFecha().getYear()== anyo)) { 
+				 suma += movimiento.getnImporte(); mMovimiento.remove(movimiento);
+			 }
+		} 
+		 // Añado el movimiento a la cuenta asociada
+		 m.setmFecha(LocalDate.of(anyo, mes, 27));
+		 m.setnImporte(suma); 
+		 if (suma != 0){ 
+			 getmCuentaAsociada().addMovimiento(suma, "liquidación"); //lo añade a cuenta asociada
+		 }
+
 		// dos pasadas, una para calcular el stream y otra para calcular los elementos
-		double suma = 0;
+//		double suma = 0;
 //		Movimiento m = new Movimiento();
 //
 //		Optional<Double> r = mMovimiento.stream()

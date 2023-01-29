@@ -3,7 +3,7 @@ package Banco;
 import java.time.LocalDate;
 
 public abstract class Tarjeta {
-	private Cuenta mCuentaAsociada;
+	protected Cuenta mCuentaAsociada;
 	protected LocalDate mfechaDeCaducidad; //dd/mm/año
 	protected String mNumero;
 	protected String mTitular;

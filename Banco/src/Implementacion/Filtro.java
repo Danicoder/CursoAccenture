@@ -82,14 +82,14 @@ public class Filtro implements Filtros {
 		return fmax(fecha, maxFecha) && fmin(fecha, minFecha);
 	}
 
-	public LocalDate fechaCorrecta(String fecha) throws Exception {
+	public LocalDate fechaCorrecta(String fecha){
 		return fechaCorrecta(fecha,"dd/MM/YYYY");
 	}
 
-	public LocalDate fechaCorrecta(String fecha, String formato) throws Exception {
+	public LocalDate fechaCorrecta(String fecha, String formato) {
 		DateTimeFormatter formater = DateTimeFormatter.ofPattern(formato);
 		try {
-			return LocalDate.parse(fecha, formater);
+			return LocalDate.parse(fecha,formater);
 		}catch(DateTimeParseException e) {}
 		return null;
 	}
