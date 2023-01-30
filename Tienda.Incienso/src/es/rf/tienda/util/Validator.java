@@ -270,7 +270,6 @@ public class Validator {
 	 */
 
 	public static boolean valDateMin(LocalDate fecha, LocalDate min) {
-		fecha.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
 		return fecha.isAfter(min);
 	}
 

@@ -78,24 +78,25 @@ public class Credito extends Tarjeta {
 		 for (Movimiento movimiento : mMovimiento) { 
 			 if ((mes == movimiento.getmFecha().getMonthValue()) 
 				&& (movimiento.getmFecha().getYear()== anyo)) { 
-				 suma += movimiento.getnImporte(); mMovimiento.remove(movimiento);
+				 suma += movimiento.getnImporte(); 
+				 mMovimiento.remove(movimiento);
 			 }
 		} 
 		 // Añado el movimiento a la cuenta asociada
 		 m.setmFecha(LocalDate.of(anyo, mes, 27));
 		 m.setnImporte(suma); 
 		 if (suma != 0){ 
-			 getmCuentaAsociada().addMovimiento(suma, "liquidación"); //lo añade a cuenta asociada
+			 getmCuentaAsociada().addMovimiento(suma, "liquidación");
 		 }
-
-// 		dos pasadas, una para calcular el stream y otra para calcular los elementos
-//		Optional<Double> r = mMovimiento.stream()
-//				.filter(mov -> m.getmFecha().getMonthValue() == mes && m.getmFecha().getYear() == anyo)
-//				.map(mov -> m.getnImporte()).reduce((subtotal, element) -> subtotal + element);
-//
-//		mMovimiento.stream()
-//				.filter(mov -> !(m.getmFecha().getMonthValue() == mes && m.getmFecha().getYear() == anyo))
-//				.collect(Collectors.toList());
+		 /*
+	 		//Dos pasadas, una para calcular el stream y otra para calcular los elementos
+			total = mMovimiento.stream()
+					.filter(mov -> mov.getmFecha().getMonthValue() == mes && mov.getmFecha().getYear() == anyo)
+					.map(mov -> mov.getnImporte()).reduce(0,(subtotal, element) -> subtotal + element);
+			mMovimientos = new List<Movimiento>(mMovimiento.stream()
+					.filter(mov -> !(mov.getmFecha().getMonthValue() == mes && mov.getmFecha().getYear() == anyo))
+					.collect(Collectors.toList());
+		*/
 	}
 
 	/**

@@ -36,7 +36,7 @@ class ValidatorTest {
 	final String CONTRASEYA2 = "";
 	final String CONTRASEYA3= "23Dani";
 	
-	final LocalDate hoy = LocalDate.now();
+	final LocalDate HOY = LocalDate.now();
 	final LocalDate FECHAMENOR= LocalDate.of(2022,01,12);
 	final LocalDate FECHAMAYOR= LocalDate.of(2024,03,19);
 	final String FECHAOK= "12/03/2019";
@@ -132,14 +132,14 @@ class ValidatorTest {
 
 	@Test
 	void testValDateMin() {
-		assertTrue(Validator.valDateMin(FECHAMAYOR,hoy));
+		assertTrue(Validator.valDateMin(FECHAMAYOR,HOY));
 		assertTrue(Validator.valDateMin(FECHAMAYOR,FECHAMENOR));
 		assertFalse(Validator.valDateMin(FECHAMENOR, FECHAMAYOR));
 	}
 
 	@Test
 	void testValDateMax() {
-		assertTrue(Validator.valDateMax(FECHAMENOR,hoy));
+		assertTrue(Validator.valDateMax(FECHAMENOR,HOY));
 		assertTrue(Validator.valDateMax(FECHAMENOR,FECHAMAYOR));
 		assertFalse(Validator.valDateMax(FECHAMAYOR,FECHAMENOR));
 	}
