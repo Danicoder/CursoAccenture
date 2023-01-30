@@ -9,79 +9,85 @@ import org.junit.jupiter.api.Test;
 
 class ValidatorTest {
 	
-	final String TextOK = "dANIELA5";
-	final String TextER = "$Da%&";
+	final String TEXTOOK = "dANIELA5";
+	final String TEXTOER = "$Da%&";
 	
-	final String vacia = "";
-	final String Null = null;
+	final String VACIA = "";
+	final String NULL = null;
 	
-	final String NumberOK1 = "1234567891";//10
-	final String NumberOK2 = "23 876 67 0860";//14
-	final String NumberErrorLong = "23 876 6745673628767889 0860";//28
-	final String NumberVacio = "";
-	final String NumberNull = null;
-	final String NumberEr3 = "+34$6427&fggh67856";//18
+	final String NUMBEROK1 = "1234567891";//10
+	final String NUMBEROK2 = "23 876 67 0860";//14
+	final String NUMBERERRORLONG = "23 876 6745673628767889 0860";//28
+	final String NUMBERVACIO = "";
+	final String NUMBERNULL = NULL;
+	final String NUMBERER3 = "+34$6427&fggh67856";//18
 	
-	final String emailok1 = "texto1@texto2.tld";
-	final String emailError1 = "Concha.hotmail.com";
-	final String emailError2 = "Concha@hotmailcom";
-	final String emailError3 = "Conchahotmailcom";
-	final String emailError4 = "Concha@@hotmailcom";
+	final String EMAILOK1 = "texto1@texto2.tld";
+	final String EMAILERROR1 = "Concha.hotmail.com";
+	final String EMAILERROR2 = "Concha@hotmailcom";
+	final String EMIALERROR3 = "Conchahotmailcom";
+	final String EMAILERROR4 = "Concha@@hotmailcom";
 	
-	final String DniOK1 = "48.764.757-L";
-	final String DniERR1 = "48764757-O";
-	final String DniERR2 = "48.678.4-A";
+	final String DNIOK = "48.764.757-L";
+	final String DNIERR1 = "48764757-O";
+	final String DNIERR2 = "48.678.4-A";
  
-	final String contraseña1 = "332@Daniela";
-	final String contraseñaError1 = "";
-	final String contraseñaError2 = "23Dani";
+	final String CONTRASEYA1 = "332@Daniela";
+	final String CONTRASEYA2 = "";
+	final String CONTRASEYA3= "23Dani";
 	
 	final LocalDate hoy = LocalDate.now();
-	final LocalDate FechaMENOR= LocalDate.of(2022,01,12); //dia,mes año
-	final LocalDate FechaMAYOR= LocalDate.of(2024,03,19);
-	final String FechaOK1= "12/02/2023";
-	final String FechaOK2= "12/03/2022";
-	final String FechaError1= "12-02-2023";
-	final String FechaError2= "24122023";
-	final String FechaError3= "ab-cd-ef";
-	final String FechaError4= "2023-02-15";
+	final LocalDate FECHAMENOR= LocalDate.of(2022,01,12);
+	final LocalDate FECHAMAYOR= LocalDate.of(2024,03,19);
+	final String FECHAOK= "12/03/2019";
+	final String FECHAERROR2= "24122023";
+	final String FECHAERROR3= "ab-cd-ef";
+	final String FECHAERROR4= "21-03-2020";
 	
+	final String PRODUCTOOK1 = "HO333";
+	final String PRODUCTOERROR = "A123B";
+	final String PRODUCTOERROR1 = "ad45687P";
+	final String PRODUCTOERROR2 = "1Holik";
+	final String PRODUCTOERROR3 = "1Av";
+	final String PRODUCTOERROR4 = "hola";
+	final String PRODUCTOERROR5 = "123";
+	final String PRODUCTOERROR6 = "0AB123";
 	@Test
 	void testIsAlfanumeric() {
-		assertTrue(Validator.isAlfanumeric(TextOK));
-		assertFalse(Validator.isAlfanumeric(TextER));
+		assertTrue(Validator.isAlfanumeric(TEXTOOK));
+		assertFalse(Validator.isAlfanumeric(TEXTOER));
 	}
 	
 	@Test
 	void testIsVacio() {
-		assertTrue(Validator.isVacio(vacia));
-		assertTrue(Validator.isVacio(Null));
+		assertTrue(Validator.isVacio(VACIA));
+		assertTrue(Validator.isVacio(NULL));
 	}
 
 	@Test
 	void testCumplePhoneNumber() {
-		assertTrue(Validator.cumplePhoneNumber(NumberOK1));
-		assertTrue(Validator.cumplePhoneNumber(NumberOK2));
-		assertFalse(Validator.cumplePhoneNumber(NumberErrorLong));
-		assertFalse(Validator.cumplePhoneNumber(NumberVacio));
-		assertFalse(Validator.cumplePhoneNumber(NumberNull));
-		assertFalse(Validator.cumplePhoneNumber(NumberEr3));
+		assertTrue(Validator.cumplePhoneNumber(NUMBEROK1));
+		assertTrue(Validator.cumplePhoneNumber(NUMBEROK2));
+		assertFalse(Validator.cumplePhoneNumber(NUMBERERRORLONG));
+		assertFalse(Validator.cumplePhoneNumber(NUMBERVACIO));
+		assertFalse(Validator.cumplePhoneNumber(NUMBERNULL));
+		assertFalse(Validator.cumplePhoneNumber(NUMBERER3));
 	}
 
 	@Test
 	void testIsEmailValido() {
-		assertTrue(Validator.isEmailValido(emailok1));
-		assertFalse(Validator.isEmailValido(emailError1));
-		assertFalse(Validator.isEmailValido(emailError2));
-		assertFalse(Validator.isEmailValido(emailError3));
-		assertFalse(Validator.isEmailValido(emailError4));
+		assertTrue(Validator.isEmailValido(EMAILOK1));
+		assertFalse(Validator.isEmailValido(EMAILERROR1));
+		assertFalse(Validator.isEmailValido(EMAILERROR2));
+		assertFalse(Validator.isEmailValido(EMIALERROR3));
+		assertFalse(Validator.isEmailValido(EMAILERROR4));
 	}
 
 	@Test
 	void testCumpleDNI() {
-		assertTrue(Validator.cumpleDNI(DniOK1));
-		assertFalse(Validator.cumpleDNI(DniERR1));
-		assertFalse(Validator.cumpleDNI(DniERR2));
+		assertTrue(Validator.cumpleDNI(DNIOK));
+		assertFalse(Validator.cumpleDNI(DNIERR1));
+		assertFalse(Validator.cumpleDNI(DNIERR2));
 	}
 
 	@Test
@@ -126,33 +132,42 @@ class ValidatorTest {
 
 	@Test
 	void testValDateMin() {
-		assertTrue(Validator.valDateMin(FechaMAYOR,hoy));//la fecha hoy debe ser mayor al min = mayor
-		//assertFalse(Validator.valDateMin(LocalDate.parse(Fechaok2), LocalDate.of(2022,03,13)));
-		//assertFalse(Validator.valDateMin(LocalDate.parse(FechaError4), null));//could not be parsed at index 0
-		//assertFalse(Validator.valDateMin(LocalDate.parse(FechaError5), null));//could not be parsed at index 0
+		assertTrue(Validator.valDateMin(FECHAMAYOR,hoy));
+		assertTrue(Validator.valDateMin(FECHAMAYOR,FECHAMENOR));
+		assertFalse(Validator.valDateMin(FECHAMENOR, FECHAMAYOR));
 	}
 
 	@Test
 	void testValDateMax() {
-		assertTrue(Validator.valDateMax(FechaMENOR,hoy));
-		assertTrue(Validator.valDateMax(LocalDate.parse(FechaOK1),LocalDate.parse(FechaOK2)));
-		//assertFalse(Validator.valDateMin(LocalDate.parse(Fechaok2), LocalDate.of(2022,03,13)));
+		assertTrue(Validator.valDateMax(FECHAMENOR,hoy));
+		assertTrue(Validator.valDateMax(FECHAMENOR,FECHAMAYOR));
+		assertFalse(Validator.valDateMax(FECHAMAYOR,FECHAMENOR));
 	}
 
 	@Test
 	void testEsFechaValida() {
-		assertTrue(Validator.esFechaValida(FechaOK1));
-		//assertTrue(Validator.esFechaValida(Fechaok2));
-		//assertFalse(Validator.esFechaValida(FechaError1));//could not be parsed at index 0
-		//assertFalse(Validator.esFechaValida(FechaError2));//could not be parsed at index 0
-		//assertFalse(Validator.esFechaValida(FechaError3));//could not be parsed at index 0
+		assertTrue(Validator.esFechaValida(FECHAOK));
+		assertFalse(Validator.esFechaValida(FECHAERROR2));
+		assertFalse(Validator.esFechaValida(FECHAERROR3));
+		assertFalse(Validator.esFechaValida(FECHAERROR4));
 	}
 
 	@Test
 	void testEsPasswordValida() {
-		assertTrue(Validator.esPasswordValida(contraseña1));
-		assertFalse(Validator.esPasswordValida(contraseñaError1));
-		assertFalse(Validator.esPasswordValida(contraseñaError2));
+		assertTrue(Validator.esPasswordValida(CONTRASEYA1));
+		assertFalse(Validator.esPasswordValida(CONTRASEYA2));
+		assertFalse(Validator.esPasswordValida(CONTRASEYA3));
 	}
-
+	
+	@Test
+	void testCodProducto() {
+		assertTrue(Validator.codProducto(PRODUCTOOK1));
+		assertFalse(Validator.codProducto(PRODUCTOERROR));
+		assertFalse(Validator.codProducto(PRODUCTOERROR1));
+		assertFalse(Validator.codProducto(PRODUCTOERROR2));
+		assertFalse(Validator.codProducto(PRODUCTOERROR3));
+		assertFalse(Validator.codProducto(PRODUCTOERROR4));
+		assertFalse(Validator.codProducto(PRODUCTOERROR5));
+		assertFalse(Validator.codProducto(PRODUCTOERROR6));
+	}
 }

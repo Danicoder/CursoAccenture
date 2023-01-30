@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.format.FormatStyle;
 import java.util.Iterator;
 
@@ -48,7 +49,10 @@ public class Validator {
 	 * Longitud que debe tener todo DNI pasado a la aplicación.
 	 */
 	private final static int LONGITUD_DNI = 12;
-
+	/**
+	 * Patrón para aceptar dos letras, tres números y solo mayúsculas.
+	 */
+	private final static String CODPRODUCT_PATTERN = "^[A-Z]{2}+\\d{3}$";
 	/*
 	 * *****************************************************************************
 	 * ********** NOMBRE: isAlfanumeric *
@@ -290,15 +294,11 @@ public class Validator {
 	 *         indicado
 	 */
 	public static boolean esFechaValida(String fecha) {
-
-		if (!isVacio(fecha)) {
-			SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/mm/aaaa");
-			// la fecha se analizada con rigor y no se
-			// permita ninguna interpretación no válida
-			formatoFecha.setLenient(false);
-			LocalDate fechaValida = LocalDate.parse(fecha);
+		DateTimeFormatter formater = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		try {
+			LocalDate.parse(fecha,formater);
 			return true;
-		}
+		}catch(DateTimeParseException e) {}
 		return false;
 	}
 
@@ -311,5 +311,12 @@ public class Validator {
 	 */
 	public static boolean esPasswordValida(String password) {
 		return password.matches(PASSWORD_PATTERN) && !isVacio(password);
+	}
+	/**
+	 * Filtro de código de producto. Debe contener:
+	 * Mayúsculas (iniciales, no entre números), números, 2 letras y 3 números
+	 */
+	public static boolean codProducto(String codigo) {
+		return codigo.matches(CODPRODUCT_PATTERN) && !isVacio(codigo);
 	}
 }
