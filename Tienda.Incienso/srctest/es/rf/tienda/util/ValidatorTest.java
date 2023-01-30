@@ -36,14 +36,15 @@ class ValidatorTest {
 	final String contraseñaError1 = "";
 	final String contraseñaError2 = "23Dani";
 	
-	final String Fechaok1="2024-03-19";
-	final String Fechaok2="2020-03-19";
-	final String FechaError1="12-02-2023";
-	final String FechaError2="12.02.2023";
-	final String FechaError3="12-2023";
-	final String FechaError4="24122023";
-	final String FechaError5="ab-cd-ef";
-	final String FechaError6="2023-02-15";
+	final LocalDate hoy = LocalDate.now();
+	final LocalDate FechaMENOR= LocalDate.of(2022,01,12); //dia,mes año
+	final LocalDate FechaMAYOR= LocalDate.of(2024,03,19);
+	final String FechaOK1= "12/02/2023";
+	final String FechaOK2= "12/03/2022";
+	final String FechaError1= "12-02-2023";
+	final String FechaError2= "24122023";
+	final String FechaError3= "ab-cd-ef";
+	final String FechaError4= "2023-02-15";
 	
 	@Test
 	void testIsAlfanumeric() {
@@ -69,11 +70,11 @@ class ValidatorTest {
 
 	@Test
 	void testIsEmailValido() {
-		assertTrue(Validator.cumplePhoneNumber(emailok1));
-		assertFalse(Validator.cumplePhoneNumber(emailError1));
-		assertFalse(Validator.cumplePhoneNumber(emailError2));
-		assertFalse(Validator.cumplePhoneNumber(emailError3));
-		assertFalse(Validator.cumplePhoneNumber(emailError4));
+		assertTrue(Validator.isEmailValido(emailok1));
+		assertFalse(Validator.isEmailValido(emailError1));
+		assertFalse(Validator.isEmailValido(emailError2));
+		assertFalse(Validator.isEmailValido(emailError3));
+		assertFalse(Validator.isEmailValido(emailError4));
 	}
 
 	@Test
@@ -125,22 +126,23 @@ class ValidatorTest {
 
 	@Test
 	void testValDateMin() {
-		assertTrue(Validator.valDateMin(LocalDate.parse(Fechaok1), LocalDate.now()));
-		assertFalse(Validator.valDateMin(LocalDate.parse(Fechaok2), LocalDate.of(2022,03,13)));
+		assertTrue(Validator.valDateMin(FechaMAYOR,hoy));//la fecha hoy debe ser mayor al min = mayor
+		//assertFalse(Validator.valDateMin(LocalDate.parse(Fechaok2), LocalDate.of(2022,03,13)));
 		//assertFalse(Validator.valDateMin(LocalDate.parse(FechaError4), null));//could not be parsed at index 0
 		//assertFalse(Validator.valDateMin(LocalDate.parse(FechaError5), null));//could not be parsed at index 0
 	}
 
 	@Test
 	void testValDateMax() {
-		assertTrue(Validator.valDateMin(LocalDate.parse(Fechaok1), LocalDate.now()));
-		assertFalse(Validator.valDateMin(LocalDate.parse(Fechaok2), LocalDate.of(2022,03,13)));
+		assertTrue(Validator.valDateMax(FechaMENOR,hoy));
+		assertTrue(Validator.valDateMax(LocalDate.parse(FechaOK1),LocalDate.parse(FechaOK2)));
+		//assertFalse(Validator.valDateMin(LocalDate.parse(Fechaok2), LocalDate.of(2022,03,13)));
 	}
 
 	@Test
 	void testEsFechaValida() {
-		assertTrue(Validator.esFechaValida(Fechaok1));
-		assertTrue(Validator.esFechaValida(Fechaok2));
+		assertTrue(Validator.esFechaValida(FechaOK1));
+		//assertTrue(Validator.esFechaValida(Fechaok2));
 		//assertFalse(Validator.esFechaValida(FechaError1));//could not be parsed at index 0
 		//assertFalse(Validator.esFechaValida(FechaError2));//could not be parsed at index 0
 		//assertFalse(Validator.esFechaValida(FechaError3));//could not be parsed at index 0

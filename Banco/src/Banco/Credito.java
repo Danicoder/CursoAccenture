@@ -88,10 +88,7 @@ public class Credito extends Tarjeta {
 			 getmCuentaAsociada().addMovimiento(suma, "liquidación"); //lo añade a cuenta asociada
 		 }
 
-		// dos pasadas, una para calcular el stream y otra para calcular los elementos
-//		double suma = 0;
-//		Movimiento m = new Movimiento();
-//
+// 		dos pasadas, una para calcular el stream y otra para calcular los elementos
 //		Optional<Double> r = mMovimiento.stream()
 //				.filter(mov -> m.getmFecha().getMonthValue() == mes && m.getmFecha().getYear() == anyo)
 //				.map(mov -> m.getnImporte()).reduce((subtotal, element) -> subtotal + element);

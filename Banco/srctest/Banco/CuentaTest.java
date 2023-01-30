@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import Implementacion.Filtro;
+import Banco.Utils.Filtro;
 
 class CuentaTest {
 	Cuenta cuenta;
