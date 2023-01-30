@@ -54,10 +54,10 @@ public class Filtro implements Filtros {
 	 * @param fmax
 	 * @return el año , siempre no sea mayor a 5 años
 	 */
-	public boolean fmax(LocalDate fecha, int fmax) {
-		return fecha.getYear() < fmax;
+	@Override
+	public boolean fmax(LocalDate fecha, LocalDate fmax) {
+		return fecha.isAfter(fmax);
 	}
-
 	/**
 	 * Método que devuelve verdadero siempre que la fecha sea mayor a 3 años
 	 * 
@@ -65,9 +65,9 @@ public class Filtro implements Filtros {
 	 * @param fmin
 	 * @return el año siempre que no sea mayor a 3 años
 	 */
-	public boolean fmin(LocalDate fecha, int fmin) {
-		return fecha.getYear() > fmin;
-		// return fecha.isAfter(fmax); me obliga a poner en todos localDate
+	@Override
+	public boolean fmin(LocalDate fecha, LocalDate fmin) {
+		return fecha.isBefore(fmin);
 	}
 
 	/**
@@ -78,12 +78,12 @@ public class Filtro implements Filtros {
 	 * @param minFecha
 	 * @return la fecha siempre que no supere el rango
 	 */
-	public boolean fechaFiltro(LocalDate fecha, int maxFecha, int minFecha) {
+	public boolean fechaFiltro(LocalDate fecha, LocalDate maxFecha, LocalDate minFecha) {
 		return fmax(fecha, maxFecha) && fmin(fecha, minFecha);
 	}
 
 	public LocalDate fechaCorrecta(String fecha){
-		return fechaCorrecta(fecha,"dd/MM/YYYY");
+		return fechaCorrecta(fecha,"dd-MM-YYYY");
 	}
 
 	public LocalDate fechaCorrecta(String fecha, String formato) {

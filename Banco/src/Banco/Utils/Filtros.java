@@ -31,14 +31,14 @@ public interface Filtros {
 	 * @param fmax
 	 * @return el año , siempre no sea mayor a 5 años
 	 */
-	public boolean fmax(LocalDate fecha,int fmax);
+	public boolean fmax(LocalDate fecha,LocalDate fmax);
 	/**
 	 * Método que devuelve verdadero siempre que la fecha sea mayor a 3 años
 	 * @param fecha
 	 * @param fmin
 	 * @return el año siempre que no sea mayor a 3 años
 	 */
-	public boolean fmin(LocalDate fecha,int fmin);
+	public boolean fmin(LocalDate fecha,LocalDate fmin);
 	/**
 	 * Método que cumple con el rango de una fecha de entre 3 y 5 años
 	 * @param fecha
@@ -46,5 +46,5 @@ public interface Filtros {
 	 * @param minFecha
 	 * @return la fecha siempre que no supere el rango
 	 */
-	public boolean fechaFiltro(LocalDate fecha, int maxFecha,int minFecha);
+	public boolean fechaFiltro(LocalDate fecha, LocalDate maxFecha,LocalDate minFecha);
 }

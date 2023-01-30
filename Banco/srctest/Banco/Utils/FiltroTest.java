@@ -1,52 +1,57 @@
 package Banco.Utils;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
 
+import org.junit.Test;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
-import Banco.Utils.Filtro;
 
-class filtroTest {
+class FiltroTest {
 	
-	final String TITULAR1 = "Este titular es";//15
+	final String TITULAR1 = "soy un titular de prueba";//24
 	final String TITULAR2 = "Este tirular es de 21567894789478945";//36
-	final String TITULAR3 = "";
+	final String TITULAR3 = "titular";//7
+	final String TITULARVACIO = "";
+	final String TITULARNULL=null;
 	final String TITULAR4 = "asdgdfgfdhgfhgfhhhhhhhhhhhh";//27
+	
+	final LocalDate FECHAOKBEFORE = LocalDate.of(2024, 01, 10);
+	final LocalDate FECHAOKAFTER = LocalDate.of(2019, 01, 10);
+	final LocalDate HOY = LocalDate.now();
 	
 	Filtro filtro;
 	@BeforeAll
-	void Creacion() {
+	void creacion() {
 		filtro = new Filtro();
 	}
-	
 	@Test
 	void testTMaxPasa27() {
+		assertTrue(filtro.tMax(TITULAR4,30));
+		assertFalse(filtro.tMax(TITULAR3,30));
+	}
+	@Test
+	void testTMaxPasa24() {
 		assertTrue(filtro.tMax(TITULAR1, 30));
 	}
 	@Test
-	void testTMaxPasa21() { //El resultado a de ser verdadero
-		assertTrue(filtro.tMax(TITULAR1, 30));
-	}
-	@Test
-	void testTMaxNull() { //El resultado a de ser falso
-		assertTrue(filtro.tMax(TITULAR3, 30));
+	void testTMaxNull() {
+		assertTrue(filtro.tMax(TITULARNULL, 30));
 	}
 
 	@Test
-	void testTMinEncima() {//por encima
+	void testTMinEncima() {
 		assertTrue(filtro.tMin(TITULAR2, 20));
 	}
 	@Test
-	void testTMinDebajo() {//por debajo
-		assertTrue(filtro.tMax(TITULAR1, 20));
+	void testTMinDebajo() {
+		assertTrue(filtro.tMax(TITULAR3, 20));
 	}
 	@Test
-	void testTMinNullo() {//nulo
-		assertTrue(filtro.tMax(TITULAR3, 20));
+	void testTMinNullo() {
+		assertTrue(filtro.tMax(TITULARNULL, 20));
 	}
 
 	@Test
@@ -60,18 +65,17 @@ class filtroTest {
 
 	@Test
 	void testFmax() {
-		assertFalse(filtro.fmax(LocalDate.now(), 5));
+		assertFalse(filtro.fmax(HOY, FECHAOKBEFORE));
 	}
 
 	@Test
 	void testFmin() {
-		System.out.println(filtro.fmin(LocalDate.now(), 5));
-		assertTrue(filtro.fmin(LocalDate.now(), 5));
+		System.out.println(filtro.fmin(FECHAOKAFTER,HOY));
+		assertTrue(filtro.fmin(FECHAOKAFTER,HOY));
 	}
 
 	@Test
 	void testFechafiltro() {
-		assertFalse(filtro.fechaFiltro(LocalDate.now(), 5, 3));
+		assertTrue(filtro.fechaFiltro(HOY,FECHAOKAFTER,FECHAOKBEFORE));
 	}
-
 }

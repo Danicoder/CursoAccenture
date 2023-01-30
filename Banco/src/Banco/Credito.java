@@ -71,6 +71,7 @@ public class Credito extends Tarjeta {
 	public void liquidar(int mes, int anyo) {
 		 double suma = 0; 
 		 Movimiento m = new Movimiento();
+
 		 
 		 System.out.println("Liquidación de la tarjeta de crédito cuyo mes es: " + mes
 		 + " y año: " + anyo); 
@@ -83,10 +84,11 @@ public class Credito extends Tarjeta {
 			 }
 		} 
 		 // Añado el movimiento a la cuenta asociada
+		 m.setmConcepto("Liquidar");
 		 m.setmFecha(LocalDate.of(anyo, mes, 27));
 		 m.setnImporte(suma); 
 		 if (suma != 0){ 
-			 getmCuentaAsociada().addMovimiento(suma, "liquidación");
+			 mMovimiento.add(m);
 		 }
 		 /*
 	 		//Dos pasadas, una para calcular el stream y otra para calcular los elementos
