@@ -2,6 +2,7 @@ package PruebasFicherosUser;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -10,22 +11,26 @@ import java.util.Scanner;
 
 public class LeerFichero {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		//Abro el fichero para mostrar los datos de ese fichero
-		File fichero = new File("C:\\Users\\d.garcia.millan\\Desktop\\PruebasFicherosEntradaSalida\\texto.txt");
+		File fichero = new File(".\\PruebasFicherosUser");
 		FileReader fr = new FileReader(fichero);
-		BufferedReader bfr = new BufferedReader(bfr);
-		try() {
-			leerfichero.useDelimiter("\n");
-			while(leerfichero.hasNext()) {
-				String cadena = leerfichero.next();
-				System.out.println(cadena + " ");
+		BufferedReader br = new BufferedReader(fr);
+		
+		String nombre ="";
+		String apellido ="";
+		String lectura = "";
+		
+		while((lectura = br.readLine()) != null) {
+			String dato[] = lectura.split("=");
+			
+			if(dato[0].equals("Nombre")) {
+				nombre=dato[1];
 			}
-		}catch(IOException e) {
-			System.out.println("Error " + e.getMessage());
+			if(dato[0].equals("Apellido")) {
+				apellido=dato[1];
+			}
 		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
+		System.out.println(nombre + " " + apellido);
 	}
 }

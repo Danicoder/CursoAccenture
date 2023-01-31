@@ -25,24 +25,26 @@ public class PedirUsuario {
 	public static void main(String[] args){
 		try {
 			//Si no existe creo el fichero indicado
-			FileWriter fichero = new FileWriter("C:\\Users\\d.garcia.millan\\Desktop\\PruebasFicherosEntradaSalida\\texto.txt");
-			Scanner lectura = new Scanner(System.in);
+			FileWriter fichero = new FileWriter(".\\PruebasFicherosUser");
 			
-			//Pregunto al usuario
-			System.out.println("Ingrese su nombre: ");
-			String nombre = lectura.next();
-			System.out.println("Ingrese su apellido: ");
-			String apellido = lectura.next();
+			String nombre;
+			String apellido;
 			
+			try(Scanner lectura = new Scanner(System.in)){
+				//Pregunto al usuario
+				System.out.println("Ingrese su nombre: ");
+				nombre = lectura.next();
+				System.out.println("Ingrese su apellido: ");
+				apellido = lectura.next();
+			}
+			PrintWriter bw = new PrintWriter(fichero);
+
 			//Escribo en el fichero indicado al comienzo
-			fichero.write("Nombre = "+nombre+"\n");
-			fichero.write("Apellido = "+apellido);
+			bw.println("Nombre="+nombre);
+			bw.println("Apellido="+apellido);
 			
 			//Cierro el stream
-			fichero.close();
-			
-		}catch(IOException e) {
-			System.out.println("Error " + e.getMessage());
+			bw.close();	
 		}
 	}
 
