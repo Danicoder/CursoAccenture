@@ -13,11 +13,9 @@ public class LeerFichero {
 	public static void main(String[] args) {
 		//Abro el fichero para mostrar los datos de ese fichero
 		File fichero = new File("C:\\Users\\d.garcia.millan\\Desktop\\PruebasFicherosEntradaSalida\\texto.txt");
-		
 		FileReader fr = new FileReader(fichero);
 		BufferedReader bfr = new BufferedReader(bfr);
-		
-		try(Scanner leerfichero = new Scanner(fichero)) {
+		try() {
 			leerfichero.useDelimiter("\n");
 			while(leerfichero.hasNext()) {
 				String cadena = leerfichero.next();
@@ -28,8 +26,6 @@ public class LeerFichero {
 		}
 		catch(Exception e) {
 			e.printStackTrace();
-		}finally {
-			fichero.;
 		}
 	}
 }
