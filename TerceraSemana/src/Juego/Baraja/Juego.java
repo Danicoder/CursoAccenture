@@ -14,6 +14,7 @@ import java.util.Set;
  * 
  * Visualizar juego de cada jugador/todos
  * ----------------------------------------
+ * Hallar los 5 patrónes del juego
  * Posibilidad de descarte
  * analizar juego
  * determinar ganardor
@@ -23,19 +24,42 @@ import java.util.Set;
 public class Juego {
 	
 	//Cartas que tiene cada mano
-	static int CARTAS = 5; 
+	static int CARTAS = 5;
 
-	public static void main(String[] args) {
+	
+	public static Set<Jugadores> obtenerJugadores() {
+		
+		Set<Jugadores> Listjug = new HashSet<>();
+		Jugadores jugador = new Jugadores();
+		
+		jugador.setEdad(23);
+		jugador.setNombre("Juan Molina");
+		Listjug.add(jugador);
+		
+		jugador.setEdad(28);
+		jugador.setNombre("Rocio Durcan");
+		Listjug.add(jugador);
+		
+		jugador.setEdad(30);
+		jugador.setNombre("Angel Alarcón");
+		Listjug.add(jugador);
+		
+		jugador.setEdad(46);
+		jugador.setNombre("Hugo Zarra");
+		Listjug.add(jugador);
+		
+		return Listjug;
+	}
+	
+		public static void main(String[] args) {
 		
 		Paquete paquete = new Paquete();
 		Set<Carta> baraja = new HashSet<>();
 		
-		Jugadores j1 = new Jugadores("Juan Molina",23);
-		Jugadores j2 = new Jugadores("Rocio Durcan",34);
-		Jugadores j3 = new Jugadores("Angel Alarcón", 20);
-		Jugadores j4 = new Jugadores("Hugo Zarra", 28);
-		
-		
+		paquete.asiganrCartas();
+		baraja = paquete.getBaraja();
+		for (Carta carta : baraja) {
+			System.out.println(carta);
+		}
 	}
-
 }

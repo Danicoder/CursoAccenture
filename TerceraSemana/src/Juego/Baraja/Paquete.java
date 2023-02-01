@@ -5,9 +5,13 @@ import java.util.Set;
 
 public class Paquete {
 	Set<Carta> baraja = new HashSet<>();
-	static final String[] CARTAS_ESPANYOLAS = {"oros","copas","espadas","bastos"};
-
+	static final String[] PALOS_POKER = {"corazones","diamantes","picas","trebol"};
 	
+	
+	public Paquete() {
+		super();
+	}
+
 	public Set<Carta> getBaraja() {
 		return baraja;
 	}
@@ -19,17 +23,15 @@ public class Paquete {
 	 * Recorre las cantidad de cartas en una baraja
 	 * y las añade al objeto de cartas
 	 */
-	public void RepartirCartas(String palo) {
-		//Cojo cada una de las cartas
-		for (int i = 0; i < CARTAS_ESPANYOLAS.length; i++) {
-			palo = CARTAS_ESPANYOLAS[i];
-		}
-		for (int i = 0; i < 13; i++) {
-			Carta c = new Carta();
-			c.setNumero(i);
-			c.setPalo(palo);
-			//añado a la baraja(Carta) las cartas
-			baraja.add(c);
+	public void asiganrCartas() {
+		//añado a la baraja(Carta)los palos
+		for (String palo : PALOS_POKER) { //palos
+			for (int i = 1; i <= 13 ;i++) {//cartas
+				Carta c = new Carta();
+				c.setNumero(i);
+				c.setPalo(palo);
+				baraja.add(c);
+			}
 		}
 	}
 }

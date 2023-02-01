@@ -1,12 +1,13 @@
 package Juego.Baraja;
 
-import java.util.HashSet;
-import java.util.Set;
-//oros,copas,espadas y bastos
+
 public class Carta {
 	private int numero;
 	private String palo;
 	
+	public Carta() {
+		super();
+	}
 	public int getNumero() {
 		return numero;
 	}

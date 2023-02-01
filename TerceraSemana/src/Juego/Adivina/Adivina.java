@@ -1,13 +1,11 @@
 package Juego.Adivina;
 
-import java.util.Random;
 import java.util.Scanner;
 
 /**
- * Realizar un juego para adivinar un número , para ello obtenerlo
- * aleatoriamente un número , y luego ir pidiendo al usuario los números
- * indicando sí es mayor o menor según sea mayor o menos con respecto a N. El
- * proceso termina cuando el usuario acuerte.
+ * Realizar un juego para adivinar un número , para ello obtener aleatoriamente
+ * un número ,luego ir pidiendo al usuario los números indicando sí es mayor o
+ * menor o igual. El juego termina cuando el usuario acuerte.
  * 
  * @author d.garcia.millan
  *
@@ -18,12 +16,13 @@ public class Adivina {
 	static int usuario = (int) (Math.random() * 1000) + 1;
 	static int limInf = 0;
 	static int limSup = 1000;
-	static boolean ganamaquina;
-	static boolean ganaUsuario;
-	static int resUsuairo = 0;
+	static boolean acierto = false;
 
 	static Scanner lectura = new Scanner(System.in);
 
+	/**
+	 * Método para que el usuario adivine un número aleatorio
+	 */
 	public static void adivinaAdivinanza1() {
 		int numero = (int) ((Math.random() * 100) + 1);
 
@@ -44,61 +43,69 @@ public class Adivina {
 			System.out.println("Has acertado !!");
 	}
 
-	public static void adivinaAdivinanza2() {
-		while (finPartida == false) {
-			try {
-				if (ganamaquina == false) {
-					tiradaMaquina();
-				} else if (ganaUsuario == false) {
-					tiradaUsuario();
-				}
-			} catch (Exception e) {
-				e.getMessage();
-				lectura.close();
-			}
-		}
-	}
-
+	/**
+	 * Método en el que es la máquina quien adivina el número que esta pensando el
+	 * usuario
+	 */
 	public static void tiradaMaquina() {
-		String respuesta = "";
+		int resUsuairo = 0;
+		do {
 
-		while (resUsuairo != maquina) {
-			System.out.print("Número" + maquina + "\t (M)ayor \t (Me)nor \t (f)in");
-			respuesta = lectura.next().toUpperCase();
+			System.out.print("El número que estas pensando es : " + maquina
+					+ "\t 1 - Mayor \t 2 - Menor \t 3 - Acertaste maquina \t 3 - fin");
+			resUsuairo = lectura.nextInt();
 
-			switch (respuesta) {
-			case "M":
-				maquina = limInf;
+			switch (resUsuairo) {
+			case 1:
+				limInf = maquina;
 				break;
-			case "Me":
-				maquina = limSup;
+			case 2:
+				limSup = maquina;
 				break;
-			case "f":
+			case 3:
+				resUsuairo = maquina;
+				break;
+			case 4:
 				System.out.println("Te gane !!");
-				ganamaquina = true;
-				finPartida = true;
 			}
-		}
+			maquina = ((limInf + limSup) / 2);
+		} while (resUsuairo != maquina);
 	}
 
-	public static void tiradaUsuario() {
-		System.out.println("Ingrese el número a adivinar ");
-		resUsuairo = lectura.nextInt();
+	/**
+	 * Método en el que el usuario adivina el número aleatorio que se le ha sido
+	 * asignado. Una ves acierte el rol de adivinanza cambiará.
+	 * 
+	 * @param RespuestaUser
+	 * @return
+	 */
+	public static boolean tiradaUsuario(int RespuestaUser) {
 
-		if (resUsuairo > usuario)
-			System.out.println(resUsuairo + " es menor");
-		else if (resUsuairo < usuario) {
-			System.out.println(resUsuairo + " es mayor");
-		} else if (resUsuairo == usuario) {
+		if (RespuestaUser > usuario)
+			System.out.println("es menor");
+		else if (RespuestaUser < usuario) {
+			System.out.println("es mayor");
+		} else if (RespuestaUser == usuario) {
 			System.out.println("Acertaste !!");
-			ganaUsuario = true;
-			finPartida = true;
+			acierto = true;
 		}
+		return acierto;
 	}
 
 	public static void main(String[] args) {
 		// adivinaAdivinanza1();
-		adivinaAdivinanza2();
+		try {
+			do {
+				while (!acierto) {
+					System.out.println("Ingrese el número a adivinar");
+					int RespuestaUser = lectura.nextInt();
+					tiradaUsuario(RespuestaUser);
+				}
+				tiradaMaquina();
+			} while (finPartida);
+			System.out.println("Gracias por participar, Chao !!");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
-
