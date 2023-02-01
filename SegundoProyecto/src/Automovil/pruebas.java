@@ -18,6 +18,5 @@ public class pruebas {
 		//que forma parte del coche
 		if(car1 instanceof todoterreno)
 			car1.activarReductora(false);
-		
 	}
 }

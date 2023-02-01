@@ -1,4 +1,5 @@
 package agroalimentaria;
+
 /**
  * Esta clase define objetos que contienen
  * productos refigerados definida al crear los objetos

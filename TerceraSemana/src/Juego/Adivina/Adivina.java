@@ -101,26 +101,4 @@ public class Adivina {
 		adivinaAdivinanza2();
 	}
 }
-/**
- * int nRandom=(int)(Math.random()*100)+1; String numCadena= ""; try (Scanner
- * lectura = new Scanner (System.in)) { System.out.println("Ingrese el número a
- * adivinar "); int numUser = lectura.nextInt();
- * 
- * while(numUser != nRandom || numUser != miNum) {
- * 
- * System.out.print("Número:" + nRandom); if(numUser != miNum) {
- * System.out.print("\t (M)ayor \\t (Me)nor \\t (f)in"); numCadena =
- * lectura.next();
- * 
- * if(numCadena.equalsIgnoreCase("M") && ( numUser < miNum || numUser <
- * nRandom)) { System.out.println("Introduce un número: "); numUser =
- * lectura.nextInt(); if(numUser == nRandom || numUser == miNum) {
- * System.out.println("Acertaste"); break; } } else
- * if(numCadena.equalsIgnoreCase("Me") && ( numUser > miNum || numUser >
- * nRandom)) { System.out.println("Introduce un número: "); numUser =
- * lectura.nextInt(); if(numUser == nRandom || numUser == miNum) {
- * System.out.println("Acertaste"); break; } }else
- * if(numCadena.equalsIgnoreCase("f") && ( numUser < miNum || numUser <
- * nRandom)) { System.out.println("Gracias por participar, chao !!"); break; } }
- * } }
- */
+
