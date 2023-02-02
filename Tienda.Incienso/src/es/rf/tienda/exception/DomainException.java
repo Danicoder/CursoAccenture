@@ -2,9 +2,8 @@ package es.rf.tienda.exception;
 
 @SuppressWarnings("serial")
 public class DomainException extends Exception {
-	
-	
-	//Solo sirvan para 
-	
-
+	DomainException(){}
+	public DomainException(String msj) {
+		super("Domain: " + msj);
+	}
 }

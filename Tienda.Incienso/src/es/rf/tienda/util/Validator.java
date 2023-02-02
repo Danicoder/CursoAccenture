@@ -66,7 +66,7 @@ public class Validator {
 		 * @return true, si cumple solo contiene caracters alfanuméricos. <br>
 		 *         false en caso contrario FECHA: Enero 2023
 		 * 
-		 *         AUTOR: Daniela García - Barcelona
+		 *         AUTOR: Daniela García - Alicante
 		 * 
 		 **************************************************************************************/
 	/**
@@ -287,7 +287,7 @@ public class Validator {
 	/**
 	 * esFechaValida Recibe una string con formato fecha dd/mm/aaaa y comprueba el
 	 * formato
-	 * 
+	 * Confirma que el formato es correcto, nada mas.
 	 * @param fecha
 	 * @return verdadero siempre que no este vacío el campo y cumpla con el formato
 	 *         indicado

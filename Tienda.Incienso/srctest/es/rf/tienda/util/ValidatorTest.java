@@ -52,6 +52,7 @@ class ValidatorTest {
 	final String PRODUCTOERROR4 = "hola";
 	final String PRODUCTOERROR5 = "123";
 	final String PRODUCTOERROR6 = "0AB123";
+	
 	@Test
 	void testIsAlfanumeric() {
 		assertTrue(Validator.isAlfanumeric(TEXTOOK));

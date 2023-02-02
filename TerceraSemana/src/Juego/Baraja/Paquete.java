@@ -45,7 +45,6 @@ public class Paquete {
 				Carta cartaJugador = new Carta();
 				cartaJugador.setNumero(carta.getNumero());
 				cartaJugador.setPalo(carta.getPalo());
-				cartaJugador.setNumero(carta.getNumero());
 				jugador.setMano(cartaJugador);//no asino bien la mano al jugador 
 				System.out.println(jugador.toString());
 			}
