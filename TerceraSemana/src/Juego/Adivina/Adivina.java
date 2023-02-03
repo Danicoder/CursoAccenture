@@ -96,11 +96,9 @@ public class Adivina {
 		// adivinaAdivinanza1();
 		try {
 			do {
-				while (!acierto) {
-					System.out.println("Ingrese el número a adivinar");
-					int RespuestaUser = lectura.nextInt();
-					tiradaUsuario(RespuestaUser);
-				}
+				System.out.println("Ingrese el número a adivinar");
+				int RespuestaUser = lectura.nextInt();
+				tiradaUsuario(RespuestaUser);
 				tiradaMaquina();
 			} while (finPartida);
 			System.out.println("Gracias por participar, Chao !!");
