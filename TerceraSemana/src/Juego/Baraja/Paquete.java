@@ -1,13 +1,15 @@
 package Juego.Baraja;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 public class Paquete {
 	Set<Carta> baraja = new HashSet<>();
-	static final String[] PALOS_POKER = {"corazones","diamantes","picas","trebol"};
-	
-	
+	static final String[] PALOS_POKER = { "corazones", "diamantes", "picas", "trebol" };
+
 	public Paquete() {
 		super();
 	}
@@ -19,14 +21,14 @@ public class Paquete {
 	public void setBaraja(Set<Carta> baraja) {
 		this.baraja = baraja;
 	}
+
 	/**
-	 * Recorre las cantidad de cartas en una baraja
-	 * y las añade al objeto de cartas
+	 * Recorre las cantidad de cartas en una baraja y las añade al objeto de cartas
 	 */
 	public void barajarCartas() {
-		//añado a la baraja(Carta)los palos
-		for (String palo : PALOS_POKER) { //palos
-			for (int i = 1; i <= 13 ;i++) {//cartas
+		// añado a la baraja(Carta)los palos
+		for (String palo : PALOS_POKER) { // palos
+			for (int i = 1; i <= 13; i++) {// cartas
 				Carta c = new Carta();
 				c.setNumero(i);
 				c.setPalo(palo);
@@ -35,27 +37,18 @@ public class Paquete {
 		}
 	}
 	/**
-	 * Repartir baraja(cartas a los jugadores)
-	 * me da cartas y en este bucle hago get del 
-	 * paquete y doy las cartas a los jugadores
+	 * Método que reparte las cartas a cada jugador
 	 */
-	public void asignarBarajas(Jugadores jugador) {
-		for (Carta carta : baraja) {
-			for (int i = 0; i < 5; i++) {
-				Carta cartaJugador = new Carta();
-				cartaJugador.setNumero(carta.getNumero());
-				cartaJugador.setPalo(carta.getPalo());
-				jugador.setMano(cartaJugador);//no asino bien la mano al jugador 
-				System.out.println(jugador.toString());
-			}
+	public void repartirBarajas(Jugadores jugadores, Iterable<Carta> baraja2) {
+		Iterator<Carta> carta;
+		for (Jugadores jug : jugadores.ListaJugadores()) {
+			carta = baraja2.iterator();
+			jug.setMano(carta.next());
+			carta.remove();
 		}
 	}
-	/**
-	 * segundo metodo que llame a ese para hacer un reparto de las cartas
-	 */
-	private void repartirBaraja(Jugadores jugador) {
-//		for (String j : jugador) {
-//			asignarBarajas(j);
-//		}
+	public void visualizrJugador(Jugadores jug) {
+		System.out.println("Jugador: " + jug.getNombre() + " ,edad " + jug.getEdad());
+		jug.getMano().forEach(System.out::println);
 	}
 }
