@@ -57,7 +57,7 @@ public class Categoria {
 	 * 
 	 */
 	public void setCat_nombre(String cat_nombre) throws Exception {
-		if(Validator.isAlfanumeric(cat_nombre) && (cat_nombre.length() > 5 && cat_nombre.length() < 50))
+		if(Validator.isAlfanumeric(cat_nombre) && Validator.cumpleLongitud(cat_nombre, 5, 50))
 			this.cat_nombre = cat_nombre;
 		else
 			throw new DomainException("El nombre ha de tener mas 5 caracteres y menos de 50");
@@ -77,10 +77,10 @@ public class Categoria {
 	 * 
 	 */
 	public void setCat_descripcion(String cat_descripcion) throws Exception {
-		if(Validator.isAlfanumeric(cat_descripcion) && cat_descripcion.length() <= 200)
+		if(Validator.isAlfanumeric(cat_descripcion) && Validator.cumpleLongitudMax(cat_descripcion, 200))
 			this.cat_descripcion = cat_descripcion;
 		else
-			throw new DomainException("El texto debe contener 200 caracteres");
+			throw new DomainException("El texto debe contener menos de 200 caracteres");
 	}
 
 

@@ -1,12 +1,8 @@
 package es.rf.tienda.util;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.time.format.FormatStyle;
-import java.util.Iterator;
 
 /********************************************************************************************
  * NOMBRE: Validator.java
@@ -253,8 +249,9 @@ public class Validator {
 	 * @param longitudMaxima (int) M�xima longitud válida para el texo
 	 * 
 	 * @return true, si la longitud del texto cumple: longitudMinima <=
-	 *         longitudTexto <=longitudMaxima FECHA: Enero 2023 AUTOR: Daniela García
-	 *         - Barcelona
+	 *         longitudTexto <=longitudMaxima 
+	 *FECHA: Febrero 2023 
+	 *AUTOR: Daniela García
 	 * 
 	 **************************************************************************************/
 	public static boolean cumpleLongitud(String texto, int longitudMinima, int longitudMaxima) {

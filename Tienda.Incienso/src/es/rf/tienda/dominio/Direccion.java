@@ -3,14 +3,15 @@ package es.rf.tienda.dominio;
 import java.util.Objects;
 
 import es.rf.tienda.exception.DomainException;
+import es.rf.tienda.util.Validator;
 
 /**
-  * Nombre		Direccion
- * Descripcion	Lista de categorías
- * @author 		Daniela García
+ * Nombre Direccion Descripcion Lista de categorías
+ * 
+ * @author Daniela García
  */
 public class Direccion {
-	
+
 	private String dir_nombre;
 	private String dir_direccion;
 	private String dir_poblacion;
@@ -19,113 +20,166 @@ public class Direccion {
 	private String dir_pais;
 	private String dir_correoE;
 	
-	
 	public Direccion() {
 		super();
 	}
 
 	/**
 	 * Getter para el nombre de la dirección
+	 * 
 	 * @return String con el nombre de la dirección
 	 */
 	public String getDir_nombre() {
 		return dir_nombre;
 	}
-	
+
 	/**
-	 * Setter para el nombre de de la dirección
+	 * Setter para el nombre 
+	 * 
 	 * @param dir_nombre
-	 * @throws DomainException 
+	 * @throws DomainException
 	 */
 	public void setDir_nombre(String dir_nombre) throws DomainException {
-		if(dir_nombre.length() > 5 && dir_nombre.length() < 100)
+		if (Validator.cumpleLongitud(dir_nombre, 5, 100) && Validator.isAlfanumeric(dir_nombre))
 			this.dir_nombre = dir_nombre;
 		else
 			throw new DomainException("El nombre ha de contener entre 5 y 100 caracteres");
 	}
+
 	/**
 	 * Getter para la dirección
-	 * @return String con el nombre de la dirección
+	 * 
+	 * @return String con el nombre
+	 * @throws DomainException 
 	 */
-	public String getDir_direccion() {
-		return dir_direccion;
+	public String getDir_direccion() throws DomainException {
+		if(Validator.isAlfanumeric(dir_cPostal))
+			return dir_direccion;
+		else
+			throw new DomainException("Debe ser minúscula, mayúscula con dígitos entre 0 y 9");
 	}
+
 	/**
-	 *  Setter para la dirección
+	 * Setter para la dirección
+	 * 
 	 * @param dir_direccion
+	 * @throws DomainException
 	 */
-	public void setDir_direccion(String dir_direccion) {
-		this.dir_direccion = dir_direccion;
+	public void setDir_direccion(String dir_direccion) throws DomainException {
+		if (Validator.isAlfanumeric(dir_direccion))
+			this.dir_direccion = dir_direccion;
+		else
+			throw new DomainException("Debe ser minúscula, mayúscula con dígitos entre 0 y 9");
 	}
+
 	/**
 	 * Getter para la población
+	 * 
 	 * @return String con el nombre de la población
 	 */
 	public String getDir_poblacion() {
 		return dir_poblacion;
 	}
+
 	/**
 	 * Setter para la población
+	 * 
 	 * @param dir_poblacion
+	 * @throws DomainException
 	 */
-	public void setDir_poblacion(String dir_poblacion) {
-		this.dir_poblacion = dir_poblacion;
+	public void setDir_poblacion(String dir_poblacion) throws DomainException {
+		if (Validator.isAlfanumeric(dir_direccion))
+			this.dir_poblacion = dir_poblacion;
+		else
+			throw new DomainException("Debe ser minúscula, mayúscula con dígitos entre 0 y 9");
 	}
+
 	/**
 	 * Getter para el código postal
+	 * 
 	 * @return String del código postal
 	 */
 	public String getDir_cPostal() {
 		return dir_cPostal;
 	}
+
 	/**
 	 * Setter para el código postal
+	 * 
 	 * @param dir_cPostal
+	 * @throws DomainException
 	 */
-	public void setDir_cPostal(String dir_cPostal) {
-		this.dir_cPostal = dir_cPostal;
+	public void setDir_cPostal(String dir_cPostal) throws DomainException {
+		if (Validator.isAlfanumeric(dir_cPostal))
+			this.dir_cPostal = dir_cPostal;
+		else
+			throw new DomainException("Debe ser minúscula, mayúscula con dígitos entre 0 y 9");
 	}
+
 	/**
 	 * Getter que devuevle la provincia
+	 * 
 	 * @return la provincia
 	 */
 	public String getDir_provincia() {
 		return dir_provincia;
 	}
+
 	/**
 	 * Setter para la provincia
+	 * 
 	 * @param dir_provincia
+	 * @throws DomainException
 	 */
-	public void setDir_provincia(String dir_provincia) {
-		this.dir_provincia = dir_provincia;
+	public void setDir_provincia(String dir_provincia) throws DomainException {
+		if (Validator.isAlfanumeric(dir_provincia))
+			this.dir_provincia = dir_provincia;
+		else
+			throw new DomainException("Debe ser minúscula, mayúscula con dígitos entre 0 y 9");
 	}
+
 	/**
 	 * Getter que devuelve el país
+	 * 
 	 * @return el país
 	 */
 	public String getDir_pais() {
 		return dir_pais;
 	}
+
 	/**
 	 * Setter para el país
+	 * 
 	 * @param dir_pais
+	 * @throws DomainException 
 	 */
-	public void setDir_pais(String dir_pais) {
-		this.dir_pais = dir_pais;
+	public void setDir_pais(String dir_pais) throws DomainException {
+		if (Validator.isAlfanumeric(dir_provincia))
+			this.dir_pais = dir_pais;
+		else
+			throw new DomainException("Debe ser minúscula, mayúscula con dígitos entre 0 y 9");
 	}
+
 	/**
 	 * Getter que devuelve un String del e-mail
+	 * 
 	 * @return
 	 */
 	public String getDir_correoE() {
 		return dir_correoE;
 	}
+
 	/**
 	 * Setter para el a-mail
+	 * 
 	 * @param dir_correoE
+	 * @throws DomainException 
 	 */
-	public void setDir_correoE(String dir_correoE) {
-		this.dir_correoE = dir_correoE;
+	public void setDir_correoE(String dir_correoE) throws DomainException {
+		if (Validator.isAlfanumeric(dir_correoE) && Validator.isEmailValido(dir_correoE))
+			this.dir_correoE = dir_correoE;
+		else
+			throw new DomainException("Debe ser minúscula, mayúscula con dígitos entre 0 y 9. Evita los puntos finales antes del @");
 	}
 
 	@Override
@@ -154,5 +208,5 @@ public class Direccion {
 		return "Direccion [dir_nombre=" + dir_nombre + ", dir_direccion=" + dir_direccion + ", dir_poblacion="
 				+ dir_poblacion + ", dir_cPostal=" + dir_cPostal + ", dir_provincia=" + dir_provincia + ", dir_pais="
 				+ dir_pais + ", dir_correoE=" + dir_correoE + "]";
-	}	
+	}
 }
