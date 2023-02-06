@@ -12,7 +12,7 @@ class DireccionTest {
 	
 	final String NO_ALFANUMERIC = "@#%{) _";
 	
-	final String NOMBREOK = "Daniela García";//14
+	final String NOMBREOK = "Daniela Garcia";//No puede llevar tíldes ni ñ
 	final String NOMBRERRORMIN = "Noa";
 	final String NOMBRERRORMAX = "Hola estoy escribiendo algo de relleno para pasarme de longitud y hacer pruebas, me estoy intentando pasar de 100";
 	
@@ -24,7 +24,7 @@ class DireccionTest {
 	
 	final String PROVINCIA="Alicante";
 	
-	final String PAIS="España";
+	final String PAIS="Espana";
 	
 	final String EMAIL="daniela@hotmail.com";
 
@@ -39,7 +39,7 @@ class DireccionTest {
 		creacion();
 	}
 
-	@Test//no entra en el if , cuando tiene 14 caracteres, y esta comprendido entre esos valores
+	@Test
 	void testSetDir_nombre() throws DomainException {
 		dir.setDir_nombre(NOMBREOK);
 		assertEquals(NOMBREOK,dir.getDir_nombre());
@@ -51,7 +51,7 @@ class DireccionTest {
 	  });
 	  Assertions.assertEquals("Domain: El nombre ha de contener entre 5 y 100 caracteres",thrown.getMessage());
 	}
-	@Test//deberia de funcionar al ser un caracter menos a 5
+	@Test
 	void testSetDir_nombre_error2(){
 		DomainException thrown = Assertions.assertThrows(DomainException.class, () -> {
 			dir.setDir_nombre(NOMBRERRORMIN);
@@ -66,13 +66,13 @@ class DireccionTest {
 		Assertions.assertEquals("Domain: El nombre ha de contener entre 5 y 100 caracteres",thrown.getMessage());
 	}
 
-	@Test//lanza exception
+	@Test
 	void testGetDir_direccion() throws DomainException {
 		dir.setDir_direccion(DIRECCIONOK);
 		assertEquals(DIRECCIONOK,dir.getDir_direccion());
 	}
 	
-	@Test//lanza exception
+	@Test
 	void testSetDir_direccion() throws DomainException {
 		dir.setDir_direccion(DIRECCIONOK);
 		assertEquals(DIRECCIONOK,dir.getDir_direccion());
@@ -86,13 +86,13 @@ class DireccionTest {
 		Assertions.assertEquals("Domain: Debe ser minúscula, mayúscula con dígitos entre 0 y 9",thrown.getMessage());
 	}
 
-	@Test//NullPointerException
+	@Test
 	void testGetDir_poblacion() throws DomainException {
 		dir.setDir_poblacion(POBLACION);
 		assertEquals(POBLACION,dir.getDir_poblacion());
 	}
 
-	@Test//NullPointerException
+	@Test
 	void testSetDir_poblacion() throws DomainException {
 		dir.setDir_poblacion(POBLACION);
 		assertEquals(POBLACION,dir.getDir_poblacion());
@@ -150,13 +150,13 @@ class DireccionTest {
 		assertEquals(PAIS,dir.getDir_pais());
 	}
 
-	@Test//NullPointerException
+	@Test
 	void testSetDir_pais() throws DomainException {
 		dir.setDir_pais(PAIS);
 		assertEquals(PAIS,dir.getDir_pais());
 	}
 	
-	@Test//NullPointerException
+	@Test
 	void testSetDir_pais_error() {
 		DomainException thrown = Assertions.assertThrows(DomainException.class, () -> {
 			dir.setDir_provincia(NO_ALFANUMERIC);
@@ -164,13 +164,13 @@ class DireccionTest {
 		Assertions.assertEquals("Domain: Debe ser minúscula, mayúscula con dígitos entre 0 y 9",thrown.getMessage());
 	}
 
-	@Test//lanza una exception
+	@Test
 	void testGetDir_correoE() throws DomainException {
 		dir.setDir_correoE(EMAIL);
 		assertEquals(EMAIL,dir.getDir_correoE());
 	}
 
-	@Test//lanza exepcion
+	@Test
 	void testSetDir_correoE() throws DomainException {
 		dir.setDir_correoE(EMAIL);
 		assertEquals(EMAIL,dir.getDir_correoE());

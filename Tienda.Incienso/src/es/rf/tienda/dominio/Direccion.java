@@ -19,7 +19,7 @@ public class Direccion {
 	private String dir_provincia;
 	private String dir_pais;
 	private String dir_correoE;
-	
+
 	public Direccion() {
 		super();
 	}
@@ -34,7 +34,7 @@ public class Direccion {
 	}
 
 	/**
-	 * Setter para el nombre 
+	 * Setter para el nombre
 	 * 
 	 * @param dir_nombre
 	 * @throws DomainException
@@ -50,13 +50,11 @@ public class Direccion {
 	 * Getter para la dirección
 	 * 
 	 * @return String con el nombre
-	 * @throws DomainException 
+	 * @throws DomainException
 	 */
 	public String getDir_direccion() throws DomainException {
-		if(Validator.isAlfanumeric(dir_cPostal))
-			return dir_direccion;
-		else
-			throw new DomainException("Debe ser minúscula, mayúscula con dígitos entre 0 y 9");
+		return dir_direccion;
+
 	}
 
 	/**
@@ -88,7 +86,7 @@ public class Direccion {
 	 * @throws DomainException
 	 */
 	public void setDir_poblacion(String dir_poblacion) throws DomainException {
-		if (Validator.isAlfanumeric(dir_direccion))
+		if (Validator.isAlfanumeric(dir_poblacion))
 			this.dir_poblacion = dir_poblacion;
 		else
 			throw new DomainException("Debe ser minúscula, mayúscula con dígitos entre 0 y 9");
@@ -151,10 +149,10 @@ public class Direccion {
 	 * Setter para el país
 	 * 
 	 * @param dir_pais
-	 * @throws DomainException 
+	 * @throws DomainException
 	 */
 	public void setDir_pais(String dir_pais) throws DomainException {
-		if (Validator.isAlfanumeric(dir_provincia))
+		if (Validator.isAlfanumeric(dir_pais))
 			this.dir_pais = dir_pais;
 		else
 			throw new DomainException("Debe ser minúscula, mayúscula con dígitos entre 0 y 9");
@@ -173,13 +171,14 @@ public class Direccion {
 	 * Setter para el a-mail
 	 * 
 	 * @param dir_correoE
-	 * @throws DomainException 
+	 * @throws DomainException
 	 */
 	public void setDir_correoE(String dir_correoE) throws DomainException {
-		if (Validator.isAlfanumeric(dir_correoE) && Validator.isEmailValido(dir_correoE))
+		if (Validator.isEmailValido(dir_correoE))
 			this.dir_correoE = dir_correoE;
 		else
-			throw new DomainException("Debe ser minúscula, mayúscula con dígitos entre 0 y 9. Evita los puntos finales antes del @");
+			throw new DomainException(
+					"Debe ser minúscula, mayúscula con dígitos entre 0 y 9. Evita los puntos finales antes del @");
 	}
 
 	@Override

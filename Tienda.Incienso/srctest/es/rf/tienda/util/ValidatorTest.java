@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 class ValidatorTest {
 	
-	final String TEXTOOK = "dANIELA5";
+	final String TEXTOOK = "dAN IELA5";
 	final String TEXTOER = "$Da%&";
 	
 	final String VACIA = "";
