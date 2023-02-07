@@ -4,11 +4,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 import ficheros.dao.CountryDao;
+import ficheros.dao.ICountryDao;
 import ficheros.modelos.Country;
 //Recibe las escuchas y las redirije. Sabe de llamadas
 public class CountryController {
 	//Recibe orden de la pantalla
-	CountryDao cDao;
+	ICountryDao cDao;
 	
 	public CountryController() throws SQLException {
 		cDao = new CountryDao();
@@ -33,6 +34,6 @@ public class CountryController {
 	}
 }
 /**
- * El controlador habla con los clientes, sabe hacer cosas. Dirije cómo se den hacer las cosas
- * va por capas, DAO sabe conectarse a la BD, vista dialoga con un controlador
+ * El controlador habla con los clientes. Dirije cómo se deben de hacer las cosas
+ * DAO sabe conectarse a la BD y la vista dialoga con un controlador
  */
