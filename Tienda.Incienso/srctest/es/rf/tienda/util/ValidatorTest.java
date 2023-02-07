@@ -125,8 +125,8 @@ class ValidatorTest {
 
 	@Test
 	void testCumpleLongitud() {
-		assertTrue(Validator.cumpleLongitud("Hola caracola",14,15));//13
-		assertTrue(Validator.cumpleLongitud("Good morning",13,15));//12
+		assertTrue(Validator.cumpleLongitud("Hola Caracola",12,15));//13
+		assertTrue(Validator.cumpleLongitud("Good morning",10,15));//12
 		assertFalse(Validator.cumpleLongitud("I am try programming, because I like it",50,5));//39
 		assertFalse(Validator.cumpleLongitud("Hola holita",1,6));//11
 	}
