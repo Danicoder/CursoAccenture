@@ -5,7 +5,7 @@
 	version="2.1">
 
 	<persistence-unit name="PERSISTENCE">
-		<description>MiniAPI_JPA</description>
+		<description>MiniAPI con JPA</description>
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
 		<properties>

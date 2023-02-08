@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import es.rf.tienda.exception.DomainException;
 
+
 class DireccionTest {
 	
 	final String NO_ALFANUMERIC = "@#%{) _";

@@ -1,5 +1,0 @@
-Esta es la primera línea 
-y esta la segunda
-y una mas después de rama
-Soy la rama con nombre rama
-hola

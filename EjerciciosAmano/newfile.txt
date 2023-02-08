@@ -1,4 +1,0 @@
-Me llamo la rama main
-después de modificar rama
-modificación para probar reset en los commits
-hola

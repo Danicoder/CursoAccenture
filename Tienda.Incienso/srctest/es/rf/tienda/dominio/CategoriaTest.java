@@ -2,11 +2,9 @@ package es.rf.tienda.dominio;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import es.rf.tienda.exception.DomainException;
 
 class CategoriaTest {
 	

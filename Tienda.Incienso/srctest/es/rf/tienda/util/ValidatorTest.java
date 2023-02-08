@@ -7,6 +7,8 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+
+
 class ValidatorTest {
 	
 	final String TEXTOOK = "dAN IELA5";
